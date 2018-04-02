@@ -19,7 +19,7 @@ Books
 --current page
 --pg count
 --has many shelves
---belongs to a status
+--has a status
 
 User
 --username?
@@ -43,6 +43,7 @@ xx --label
 xx --has many books
 
   Webpages
+Homepage
 All Books
 -shows all books
 -under each book is a dropbox of user's shelves to add it

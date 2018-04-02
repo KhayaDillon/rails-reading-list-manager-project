@@ -16,9 +16,10 @@ Books
 --Title 
 --Author
 --Genre
+--current page
 --pg count
---Belongs to a shelf 
---Belongs to a status
+--has many shelves
+--belongs to a status
 
 User
 --username?
@@ -26,15 +27,20 @@ User
 --password
 --has many shelves
 --has many books through shelves
+--has one book currently reading
 
 Shelves
 --name
+--belongs to a user
 --has many books
 
-Status
---label
---has many books
+Shelved_books
+-belong to shelves
+-belongs to books
 
+xx Status (Do I need this as a model?)
+xx --label
+xx --has many books
 
   Webpages
 All Books

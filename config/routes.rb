@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "static#library"
+  root to: "static#home"
 
   resources :shelves
   resources :books

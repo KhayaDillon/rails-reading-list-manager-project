@@ -1,5 +1,3 @@
-require 'pry'
-
 class Scraper
 
   def self.get_book_list
@@ -18,10 +16,6 @@ class Scraper
     scraper = self.scrape_barnesnnoble_book_list
     scraper.each do |book_hash|
       Book.create(book_hash)
-      #instance = Book.new
-      #instance.title = hash[:Title]
-      #instance.author = hash[:Author]
-      #Book.all << instance
     end
   end
 

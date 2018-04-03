@@ -1,5 +1,4 @@
 class StaticController < ApplicationController
-  def library
-    @books = Books.all
+  def home
   end
 end

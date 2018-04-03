@@ -7,4 +7,12 @@ class User < ApplicationRecord
   has_many :shelves
   has_many :books, through: :shelves
   has_one :current_book, class_name: 'Book'
+
+  after_create do |user|
+    user.create_default_shelf
+  end
+
+  def create_default_shelf
+    self.shelves.create(name: "Reading")
+  end
 end

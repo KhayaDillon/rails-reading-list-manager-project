@@ -1,3 +1,5 @@
-<% @books.each do |book| %>
-  <%= book.title %> || <%= book.author %>
-<% end %>
+<ul>
+  <% @books.each do |book| %>
+    <li><%= book.title %> || <%= book.author %></li>
+  <% end %>
+</ul>

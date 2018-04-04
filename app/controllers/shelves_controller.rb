@@ -1,5 +1,5 @@
 class ShelvesController < ApplicationController
   def index
-    @shelves = current.user.shelves
+    @shelves = current_user.shelves
   end
 end

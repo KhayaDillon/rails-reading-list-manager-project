@@ -1,8 +1,10 @@
   <% @books.each do |book| %>
     <p><%= book.title %> || <%= book.author %></p>
-    <%= form_tag edit_user_shelf do %>
-      <%= options_from_collection_for_select(current_user.shelves, :id, :name) %>
-      <%= submit_tag, "Add Book" %>
+    <%= form_tag shelved_books_path do %>
+      <%= collection_select(:shelved_book, :shelf_id, current_user.shelves, :id, :name) %>
+      <%= hidden_field_tag "shelved_book[book_id]", book.id %>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%= submit_tag "Add Book" %>
     <% end %>
     <br><br>
   <% end %>

@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   root to: "static#home"
 
   resources :users, only: [:show] do
-    resources :shelves, only: [:index, :edit, :update]
+    resources :shelves, only: [:index]
   end 
+
+  resources :shelved_books, only: [:create]
 
   resources :shelves
   resources :books

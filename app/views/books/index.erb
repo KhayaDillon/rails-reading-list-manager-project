@@ -1,5 +1,8 @@
-<ul>
   <% @books.each do |book| %>
-    <li><%= book.title %> || <%= book.author %></li>
+    <p><%= book.title %> || <%= book.author %></p>
+    <%= form_tag edit_user_shelf do %>
+      <%= options_from_collection_for_select(current_user.shelves, :id, :name) %>
+      <%= submit_tag, "Add Book" %>
+    <% end %>
+    <br><br>
   <% end %>
-</ul>

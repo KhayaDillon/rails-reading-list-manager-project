@@ -3,5 +3,11 @@
 <% @shelves.each do |shelf| %>
   <div>
     <h2> <%= shelf.name %> </h2>
+    <ul>
+      <%= raise shelf.books.inspect %>
+      <%= shelf.books.each do |book| %>
+        <li><%= book.title %> || <%= book.author %></li>
+      <% end %>
+    </ul>
   </div>
 <% end %>

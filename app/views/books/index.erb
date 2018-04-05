@@ -1,5 +1,9 @@
+<h1>Library</h1>
+
   <% @books.each do |book| %>
-    <p><%= book.title %> || <%= book.author %></p>
+    <h4><%= book.title %></h4>
+    By <%= book.author %>
+    <br><br>
     <%= form_tag shelved_books_path do %>
       <%= collection_select(:shelved_book, :shelf_id, current_user.shelves, :id, :name) %>
       <%= hidden_field_tag "shelved_book[book_id]", book.id %>

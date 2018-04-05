@@ -9,6 +9,7 @@ Reading List Manager
 -(currently reading, plan to read, on hold, finished, dropped) 
 -dropped books are removed from shelf
 -has one book currently reading
+-if current page equals total, completed (model method)
 
 
   Models
@@ -52,11 +53,12 @@ All Books
 User's Shelves
 --route would be '/user/:id/shelf/:id'
 --under each book is...
--an integer adjuster for the pg count
 -amount of pages left (model method)
+-an integer adjuster for the pg count
 -drop box to adjust book status
 -drop box to move to another shelf
 -(submitting this info goes to book edit)
+-(model method - page count must be less than page total)
 
 User Profile
 --username?

@@ -2,11 +2,25 @@
 
 <% @shelves.each do |shelf| %>
   <div>
-    <h2> <%= shelf.name %> </h2>
-    <ul>  
-      <% shelf.books.each do |book| %>
-        <li><%= book.title %> || <%= book.author %></li>
-      <% end %>
-    </ul>
+    <h2> <%= shelf.name %> Shelf </h2>
+    <% shelf.books.each do |book| %>
+
+      <div>
+        <h4><%= book.title %></h4>
+        By <%= book.author %> 
+        <br><br>
+        <%= form_for book do |f| %>
+          <%= f.label :current_page %>
+          <%= f.number_field :current_page, in: 1.0..4000.0 %>
+          <%= f.label :status %>
+          <%= f.select :status, ['Currently Reading', 'Plan to Read', 'On Hold', 'Finished', 'Dropped'] %>
+          <%= f.label :shelves %>
+          <%= collection_select :shelf, :id, current_user.shelves, :id, :name %>
+          <%= f.submit %>
+        <% end %>
+      </div>
+      <br><br>
+
+    <% end %>
   </div>
 <% end %>

@@ -9,10 +9,11 @@ class User < ApplicationRecord
   has_one :current_book, class_name: 'Book'
 
   after_create do |user|
-    user.create_default_shelf
+    user.create_default_shelves
   end
 
-  def create_default_shelf
+  def create_default_shelves
     self.shelves.create(name: "Reading")
+    self.shelves.create(name: "Finished Reading")
   end
 end

@@ -23,4 +23,14 @@
 
     <% end %>
   </div>
+  <br><br>
 <% end %>
+
+<h2>Create New Shelf</h2>
+<%= form_for @shelf do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.submit %>
+<% end %>
+<br><br>

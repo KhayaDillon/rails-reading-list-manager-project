@@ -8,7 +8,7 @@ class BooksController < ApplicationController
     book.update(book_params)
     shelf = Shelf.find(params[:shelf][:id])
     book.shelves << shelf unless shelf.books.include?(shelf)
-    redirect_to shelves_path
+    redirect_to user_shelves_path(current_user)
   end 
 
   private

@@ -17,10 +17,8 @@ Books
 --Title 
 --Author
 --Genre
---current page
 --pg count
 --has many shelves
---has a status
 
 User
 --username?
@@ -38,6 +36,8 @@ Shelves
 Shelved_books
 -belong to shelves
 -belongs to books
+--current page
+--has a status
 
 xx Status (Do I need this as a model?)
 xx --label

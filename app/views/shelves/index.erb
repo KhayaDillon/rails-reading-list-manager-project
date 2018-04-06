@@ -14,8 +14,9 @@
           <%= f.number_field :current_page, in: 1.0..4000.0 %>
           <%= f.label :status %>
           <%= f.select :status, ['Currently Reading', 'Plan to Read', 'On Hold', 'Finished', 'Dropped'] %>
-          <%= f.label :shelves %>
+          <%= f.label :shelf %>
           <%= collection_select :shelf, :id, current_user.shelves, :id, :name %>
+
           <%= f.submit %>
         <% end %>
       </div>

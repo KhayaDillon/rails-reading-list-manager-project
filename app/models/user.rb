@@ -5,8 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :shelves
-  has_many :books, through: :shelves
+  has_many :shelved_books, through: :shelves
+  has_many :books, through: :shelved_books
   has_one :current_book, class_name: 'Book'
+  validates_associated :book, uniqueness: true
 
   after_create do |user|
     user.create_default_shelves

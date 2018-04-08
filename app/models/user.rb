@@ -7,7 +7,6 @@ class User < ApplicationRecord
   has_many :shelves
   has_many :shelved_books, through: :shelves
   has_many :books, through: :shelved_books
-  has_one :current_book, class_name: 'Book'
 
   after_create do |user|
     user.create_default_shelves

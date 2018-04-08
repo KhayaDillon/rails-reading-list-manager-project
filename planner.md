@@ -8,7 +8,7 @@ Reading List Manager
 --User can change status of book 
 -(currently reading, plan to read, on hold, finished, dropped) 
 -dropped books are removed from shelf
--has one book currently reading
+xx-has one book currently reading
 -if current page equals total, completed (model method)
 
 

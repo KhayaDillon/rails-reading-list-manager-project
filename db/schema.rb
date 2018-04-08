@@ -16,9 +16,7 @@ ActiveRecord::Schema.define(version: 20180402195738) do
     t.string "title"
     t.string "author"
     t.string "genre"
-    t.integer "current_page"
     t.integer "page_count"
-    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -26,6 +24,8 @@ ActiveRecord::Schema.define(version: 20180402195738) do
   create_table "shelved_books", force: :cascade do |t|
     t.integer "shelf_id"
     t.integer "book_id"
+    t.integer "current_page"
+    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_shelved_books_on_book_id"

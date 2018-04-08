@@ -9,15 +9,15 @@
         <h4><%= book.title %></h4>
         By <%= book.author %> 
         <br><br>
-        <%= form_for book do |f| %>
+        <%= form_for book.current_shelf do |f| %>
           <%= f.label :current_page %>
           <%= f.number_field :current_page, in: 1.0..4000.0 %>
           <%= f.label :status %>
           <%= f.select :status, ['Currently Reading', 'Plan to Read', 'On Hold', 'Finished', 'Dropped'] %>
-          <%= f.label :shelf %>
-          <%= collection_select :shelf, :id, current_user.shelves, :id, :name %>
+          <%= f.label :shelf_id %>
+          <%= f.collection_select :shelf_id, current_user.shelves, :id, :name %>
 
-          <%= f.submit %>
+          <%= f.submit "Update" %>
         <% end %>
       </div>
       <br><br>

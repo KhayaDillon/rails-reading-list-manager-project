@@ -4,7 +4,7 @@ Reading List Manager
 --Library pg lists all books
 --User can create/add shelves (has a default 'Reading' and 'Completed' shelf)
 --User can add a book to one of their shelves from Library
---User can can keep track of what page they're one
+--User can keep track of what page they're on
 --User can change status of book 
 -(currently reading, plan to read, on hold, finished, dropped) 
 -dropped books are removed from shelf
@@ -58,7 +58,7 @@ User's Shelves
 -drop box to adjust book status
 -drop box to move to another shelf
 -(submitting this info goes to book edit)
--(model method - page count must be less than page total)
+xx-(model method - page count must be less than page total)
 
 User Profile
 --username?

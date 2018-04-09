@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20180402195738) do
   create_table "shelved_books", force: :cascade do |t|
     t.integer "shelf_id"
     t.integer "book_id"
-    t.integer "current_page"
+    t.integer "current_page", default: 0
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

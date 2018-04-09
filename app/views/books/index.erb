@@ -2,9 +2,9 @@
 
   <% @books.each do |book| %>
     <h4><%= book.title %></h4>
-    By: <%= book.author %>
-    <br>
-    Genre: <%= book.genre %>
+    By: <%= book.author %><br>
+    Genre: <%= book.genre %><br>
+    Page Count: <%= book.page_count %>
     <br><br>
     <% if user_signed_in? %>
       <%= form_tag shelved_books_path do %>

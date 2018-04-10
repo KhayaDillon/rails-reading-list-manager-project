@@ -69,3 +69,17 @@ User Profile
 
 
 
+  Fixes
+Sign up
+-unique username
+
+Shelves
+-edit/delete shelves
+-when I add a book, the current page isn't 0
+-when I move book to another shelf, it appears twice in list (in reading shelf and examplee)
+-when a book that's finished and you put it 'on hold' & 'reading' it doesn't move. but if the status changes to 'on hold' or 'reading' it moves to 'reading shelf' and the page left changes to 1
+-if a book is finished, it can't be moved to another shelf (e.g. fantasy)
+-adding book as 'finished' doesn't change the pages left or current page and the status is 'currently reading' but it's still in finished reading self
+-a book that was 'finished' and the status changed to 'plan to reading' doesn't change current page to 0
+-what to do in scenario status is plan to read and shelf is finished
+- on hold should have a current page 

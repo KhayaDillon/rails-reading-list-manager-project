@@ -22,8 +22,11 @@
         <% end %>
       </ul>
     </nav>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if !flash.empty? %>
+    <h1>Alert!</h1>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    <% end %>
 
     <%= yield %>
   </body>

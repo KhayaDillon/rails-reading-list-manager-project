@@ -26,7 +26,9 @@ class ShelvedBooksController < ApplicationController
     elsif shelved_book.status == "Finished" && shelved_book.status == old_status && shelved_book.shelf.name == "Reading"
       shelved_book.shelf = Shelf.find_by(name: old_shelf)
       flash[:notice] = "Books you have finished can't be put on your Reading Shelf. Please update your status and current page."
-    elsif shelved_book.current_page == shelved_book.book.page_count && shelved_book.status != "Finished"
+    elsif shelved_book.status = "Plan to Read" && shelved_book.shelf.name == "Finished Reading" 
+      flash[:notice] = "You can't put a book you plan to read in your Finished Reading Shelf."
+    elsif shelved_book.current_page == shelved_book.book.page_count && shelved_book.status != "Finished" && shelved_book.status == old_status
       shelved_book.status = "Finished" 
     elsif shelved_book.shelf.name == "Finished Reading" && shelved_book.shelf.name != old_shelf
       shelved_book.status = "Finished"
@@ -45,7 +47,10 @@ class ShelvedBooksController < ApplicationController
         shelved_book.status = old_status
         flash[:notice] = "You can't put on hold or be currently reading a book you haven't started. Please update your current page."
       end
-    when "Plan to Read" 
+    when "Plan to Read"
+      if shelved_book.current_page != 0
+        flash[:notice] = "Books you plan to read can't have a current page higher than zero."
+      end
       shelved_book.current_page = 0
     when "Dropped" 
       shelved_book.delete 

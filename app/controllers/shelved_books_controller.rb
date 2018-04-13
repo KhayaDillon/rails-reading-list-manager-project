@@ -17,6 +17,7 @@ class ShelvedBooksController < ApplicationController
   end
 
   def update
+    raise params.inspect
     shelved_book = ShelvedBook.find(params[:id])
     old_shelf = shelved_book.shelf.name
     old_status = shelved_book.status

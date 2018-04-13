@@ -52,7 +52,10 @@ All Books
 
 User's Shelves
 --route would be '/user/:id/shelf/:id'
---under each book is...
+--Top of page
+-count of books (model method)
+--count of total pages read (model method)
+--Under each book is...
 -amount of pages left (model method)
 -an integer adjuster for the pg count
 -drop box to adjust book status
@@ -60,18 +63,9 @@ User's Shelves
 -(submitting this info goes to book edit)
 xx-(model method - page count must be less than page total)
 
-User Profile
---username?
---Count of books (model method)
---Count of total pages read (model method)
---currently reading & amount of pgs left
---completed books
-
 
 
   Fixes
-Sign up
--unique username
 
 Shelves
 -edit/delete shelves
@@ -82,5 +76,10 @@ x-if a book is finished, it can't be moved to another shelf (e.g. fantasy)
 x-adding book as 'finished' doesn't change the pages left or current page and the status is 'currently reading' but it's still in finished reading self
 x-a book that was 'finished' and the status changed to 'plan to reading' doesn't change current page to 0
 x-a book that was 'finished' and the status changed to 'plan to reading', shelf to custom one, doesn't change status and doesn't change current page to 0
--what to do in scenario status is plan to read and shelf is finished
-- on hold should have a current page 
+x-what to do in scenario status is plan to read and shelf is finished
+x-on hold should have a current page 
+x-finished status and user lowers page number
+
+x-Books newly added to shelves should starts off as Plan to Read
+x-book added to Finished shelf from book collections
+

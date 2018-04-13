@@ -12,7 +12,7 @@
     <nav>
       <ul>
         <% if user_signed_in? %>
-          Hello <%= current_user.username.capitalize  %>, 
+          Hello Reader, 
           <%= link_to "Home", root_path %>
           <%= link_to "Your Shelves", user_shelves_path(current_user) %>
           <%= link_to "Sign Out", destroy_user_session_path, method: 'delete' %>

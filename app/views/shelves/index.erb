@@ -1,10 +1,28 @@
 <h1>Your Shelves</h1>
 
+<% if @shelf.new_record? %>
+  <h2>Create New Shelf</h2>
+<% else %>
+  <h2>Edit Shelf</h2>
+<% end %>
+<%= form_for @shelf do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.submit %>
+<% end %>
+<br><br>
+
 <% @shelves.each do |shelf| %>
   <div>
     <h2> <%= shelf.name %> Shelf </h2>
-    <% shelf.books.each do |book| %>
+    <%= link_to "Edit Name", edit_shelf_path(shelf) %>
+    <% unless shelf.name == "Reading" || shelf.name == "Finished Reading" %>
+      <%= link_to "Delete", shelf, method: :delete, data: { confirm: "Are you sure?" } %>
+    <% end %>
+    
 
+    <% shelf.books.each do |book| %>
       <div>
         <h4><%= book.title %></h4>
         By: <%= book.author %><br>
@@ -23,17 +41,9 @@
         <% end %>
       </div>
       <br><br>
-
     <% end %>
+
   </div>
   <br><br>
-<% end %>
-
-<h2>Create New Shelf</h2>
-<%= form_for @shelf do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.submit %>
 <% end %>
 <br><br>

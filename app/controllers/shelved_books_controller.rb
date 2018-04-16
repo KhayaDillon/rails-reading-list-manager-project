@@ -1,16 +1,16 @@
 class ShelvedBooksController < ApplicationController
   def create   
-    book = Book.find(params[:shelved_book][:book_id])
-    binding.pry
-    if current_user.books.include?(book)
+    shelved_book = ShelvedBook.new(shelved_book_new_hash)
+    if current_user.books.any? { |book| book.title == shelved_book.book.title }
       redirect_to books_path, notice: "You already have this book."
     else
-      shelved_book = ShelvedBook.create(shelved_book_params) 
       if shelved_book.shelf.name == "Finished Reading"
         shelved_book.update(status: "Finished", current_page: shelved_book.book.page_count)
       else
         shelved_book.update(status: "Plan to Read")
       end
+      shelved_book.save
+      shelved_book.book.current_shelf = shelved_book
 
       redirect_to user_shelves_path(current_user)
     end
@@ -85,6 +85,14 @@ class ShelvedBooksController < ApplicationController
   end
 
   private
+    def shelved_book_new_hash
+      shelf = Shelf.find(params[:shelved_book][:shelf_id])
+      book = Book.find(params[:shelved_book][:book_id])
+      book_copy = book.dup
+      book_copy.save
+      {shelf_id: shelf.id, book_id: book_copy.id}
+    end 
+
     def shelved_book_params
       params.require(:shelved_book).permit(:shelf_id, :book_id, :current_page, :status)
     end 

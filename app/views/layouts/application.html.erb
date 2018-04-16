@@ -12,7 +12,7 @@
     <nav>
       <ul>
         <% if user_signed_in? %>
-          Hello Reader, 
+          Hello <%= current_user.name.capitalize %>, 
           <%= link_to "Home", root_path %>
           <%= link_to "Library", books_path %>
           <%= link_to "Your Shelves", user_shelves_path(current_user) %>

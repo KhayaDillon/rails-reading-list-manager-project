@@ -79,7 +79,15 @@ x-a book that was 'finished' and the status changed to 'plan to reading', shelf 
 x-what to do in scenario status is plan to read and shelf is finished
 x-on hold should have a current page 
 x-finished status and user lowers page number
+x-on custom shelf, finished status, pg maxed, changed status to on hold, went to finished shelf instead of showing alert
 
 x-Books newly added to shelves should starts off as Plan to Read
 x-book added to Finished shelf from book collections
 
+-Ready Player 1: 0 pages left, status - finished, shelf- reading
+I tried changing the shelf to finished reading but it just copied itself
+- mary clark book from finished shelf; changed current pg to 0, status to currently reading, and shelf to reading shelf 
+status remained as finished
+-current pg:0. status: finished, shelf: reading - book drops
+when I add it back from the library to reading, the status is finished and pages left is 0
+adding a finished book from the library - shelf shouldn't be reading

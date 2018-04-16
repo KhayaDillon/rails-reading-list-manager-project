@@ -1,11 +1,11 @@
 class ShelvedBooksController < ApplicationController
   def create   
     book = Book.find(params[:shelved_book][:book_id])
+    binding.pry
     if current_user.books.include?(book)
       redirect_to books_path, notice: "You already have this book."
     else
       shelved_book = ShelvedBook.create(shelved_book_params) 
-
       if shelved_book.shelf.name == "Finished Reading"
         shelved_book.update(status: "Finished", current_page: shelved_book.book.page_count)
       else
@@ -17,7 +17,6 @@ class ShelvedBooksController < ApplicationController
   end
 
   def update
-    raise params.inspect
     shelved_book = ShelvedBook.find(params[:id])
     old_shelf = shelved_book.shelf.name
     old_status = shelved_book.status
@@ -31,11 +30,11 @@ class ShelvedBooksController < ApplicationController
         flash[:alert] = "Your book's status is no longer finished? Then your current page can't be the last page. Please update your current page accordingly."
       #Move to Reading shelf if shelf is not given, but status and current page has been adjusted appropriately
       else 
-        shelved_book.shelf = Shelf.find_by(name: "Reading")
+        shelved_book.shelf = Shelf.find_by(name: "Reading", user_id: current_user.id)
       end
     #If the status has been left to Finished but the shelf has been changed to Reading
     elsif shelved_book.status == "Finished" && shelved_book.status == old_status && shelved_book.shelf.name == "Reading"
-      shelved_book.shelf = Shelf.find_by(name: old_shelf)
+      shelved_book.shelf = Shelf.find_by(name: old_shelf, user_id: current_user.id)
       flash[:alert] = "Books you have finished can't be put on your Reading Shelf. Please update your status and current page."
     #If user changes the shelf to Finished
     elsif shelved_book.shelf.name == "Finished Reading" && shelved_book.shelf.name != old_shelf
@@ -45,28 +44,27 @@ class ShelvedBooksController < ApplicationController
       #If the user had also altered the status, and it's not Finished
       elsif shelved_book.status != "Finished"
         flash[:alert] = "You can't put a book that is not finished on your Finished Reading Shelf. Please change the book's status."
-        shelved_book.shelf = Shelf.find_by(name: old_shelf)
+        shelved_book.shelf = Shelf.find_by(name: old_shelf, user_id: current_user.id)
       end
-
     #elsif shelved_book.current_page == shelved_book.book.page_count && #shelved_book.status != "Finished" && shelved_book.status == old_status
     #  shelved_book.status = "Finished" 
     end
-
+    
     case shelved_book.status
     when "Finished" 
       if shelved_book.current_page != shelved_book.book.page_count
         shelved_book.current_page = shelved_book.book.page_count
         flash[:notice] = "Books you have finished can't have pages left to read. Current page has been set to last page."
       end
-      shelved_book.shelf = Shelf.find_by(name: "Finished Reading") if shelved_book.shelf.name == "Reading"
+      shelved_book.shelf = Shelf.find_by(name: "Finished Reading", user_id: current_user.id) if shelved_book.shelf.name == "Reading"
     when "On Hold", "Currently Reading"
       if shelved_book.current_page == shelved_book.book.page_count
-        shelved_book.shelf = Shelf.find_by(name: "Finished Reading")
-        shelved_book.status = "Finished" 
+        shelved_book.shelf = Shelf.find_by(name: old_shelf, user_id: current_user.id)
+        shelved_book.status = old_status 
         flash[:notice] = "You can't put on hold or be currently reading a book you've finished. Please update your current page."
       elsif shelved_book.current_page == 0
-        shelved_book.status = old_status
-        flash[:notice] = "You can't put on hold or be currently reading a book you haven't started. Please update your current page."
+        shelved_book.status = "Plan to Read"
+        flash[:notice] = "You can't put on hold or be currently reading a book you haven't started. Please update your current page. Status has been set to Plan to Read."
       end
     when "Plan to Read"
       if shelved_book.current_page != 0
@@ -76,9 +74,9 @@ class ShelvedBooksController < ApplicationController
     when "Dropped" 
       book_title = shelved_book.book.title
       flash[:notice] = "#{book_title} has been removed from your shelves."
-      shelved_book.delete 
+      shelved_book.delete
     end
-
+ 
     if shelved_book
       shelved_book.save
     end 

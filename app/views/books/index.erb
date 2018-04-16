@@ -7,11 +7,10 @@
     Page Count: <%= book.page_count %>
     <br><br>
     <% if user_signed_in? %>
-      <%= form_tag shelved_books_path do %>
-        <%= collection_select(:shelved_book, :shelf_id, current_user.shelves, :id, :name) %>
+      <%= form_for book.build_current_shelf do |f| %>
+        <%= f.collection_select :shelf_id, current_user.shelves, :id, :name %>
         <%= hidden_field_tag "shelved_book[book_id]", book.id %>
-        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-        <%= submit_tag "Add Book to Shelf" %>
+        <%= f.submit "Add Book to Shelf" %>
       <% end %>
     <% end %>
     <br><br>

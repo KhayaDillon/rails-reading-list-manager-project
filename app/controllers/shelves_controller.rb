@@ -28,7 +28,7 @@ class ShelvesController < ApplicationController
   def destroy
     shelf = Shelf.find(params[:id])
     name = shelf.name
-    shelf.shelved_books.destroy_all
+    shelf.books.destroy_all
     shelf.destroy
     redirect_to user_shelves_path(current_user), notice: "#{name} Shelf has been deleted."
   end

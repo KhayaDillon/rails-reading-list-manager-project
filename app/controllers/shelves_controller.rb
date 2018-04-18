@@ -9,8 +9,8 @@ class ShelvesController < ApplicationController
   end
 
   def create 
-    Shelf.create(shelf_params)
-    redirect_to user_shelves_path(current_user)
+    shelf = Shelf.create(shelf_params)
+    redirect_to user_shelves_path(current_user, anchor: "#{shelf.id}")
   end 
 
   def edit

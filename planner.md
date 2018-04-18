@@ -54,7 +54,7 @@ User's Shelves
 --route would be '/user/:id/shelf/:id'
 --Top of page
 -count of books (model method)
---count of total pages read (model method)
+-count of total pages read (model method)
 --Under each book is...
 -amount of pages left (model method)
 -an integer adjuster for the pg count
@@ -93,4 +93,4 @@ when I add it back from the library to reading, the status is finished and pages
 adding a finished book from the library - shelf shouldn't be reading
 
 To Consider
--Should shelved_book delete be in update action?
+x-Should shelved_book delete be in update action?

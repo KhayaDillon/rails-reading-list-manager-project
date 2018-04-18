@@ -1,7 +1,7 @@
 <h1>Your Shelves</h1>
 <ul>
-  <li>Amount of Book Out: <%= current_user.books.count %></li>
-  <li>Amount of Pages Read: <%=  %></li>
+  <li>Amount of Books Out: <strong><%= current_user.books.count %></strong></li>
+  <li>Amount of Pages Read: <strong><%= current_user.pages_read %></strong></li>
 </ul>
 <br><br>
 
@@ -21,7 +21,7 @@
 <br><br>
 
 <% @shelves.each do |shelf| %>
-  <fieldset>
+  <fieldset id="<%=shelf.id%>">
     
     <legend> <%= shelf.name %> Shelf </legend>
     <% unless shelf.name == "Reading" || shelf.name == "Finished Reading" %>
@@ -36,7 +36,7 @@
         Genre: <%= book.genre %><br>
         Pages Left: <%= book.pages_left %>
         <br><br>
-        <%= form_for book.current_shelf do |f| %>
+        <%= form_for book.shelved_location do |f| %>
           <%= f.label :current_page %>
           <%= f.number_field :current_page, in: 0.0..book.page_count %>
           <%= f.label :status %>

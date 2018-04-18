@@ -1,10 +1,16 @@
 <h1>Reading List Manager</h1>
 
-<div>
-  <%= link_to "Library", books_path %>
+<div class="left-pic">
+  <img src="http://i63.tinypic.com/w6xowh.jpg" width="550" height="325">
 </div>
 
-<div>
-  <%= link_to "Sign In", new_user_session_path %>
-  <%= link_to "Sign Up", new_user_registration_path %>
+<div class="right-info">
+  <h1>Welcome!</h1>
+  <div class="center">
+    <%= link_to "Library", books_path %>
+    <br><br>
+    <%= link_to "Sign In", new_user_session_path %>
+    <%= link_to "Sign Up", new_user_registration_path %>
+  </div>
 </div>
+

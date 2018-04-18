@@ -91,3 +91,6 @@ status remained as finished
 -current pg:0. status: finished, shelf: reading - book drops
 when I add it back from the library to reading, the status is finished and pages left is 0
 adding a finished book from the library - shelf shouldn't be reading
+
+To Consider
+-Should shelved_book delete be in update action?

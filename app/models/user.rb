@@ -18,4 +18,8 @@ class User < ApplicationRecord
     self.shelves.create(name: "Finished Reading")
   end
 
+  def has_book?(title)
+    self.books.any? { |book| book.title == title }
+  end
+
 end

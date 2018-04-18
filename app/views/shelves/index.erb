@@ -1,26 +1,33 @@
 <h1>Your Shelves</h1>
+<ul>
+  <li>Amount of Book Out: <%= current_user.books.count %></li>
+  <li>Amount of Pages Read: <%=  %></li>
+</ul>
+<br><br>
 
-<% if @shelf.new_record? %>
-  <h2>Create New Shelf</h2>
-<% else %>
-  <h2>Edit Shelf</h2>
-<% end %>
-<%= form_for @shelf do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.submit %>
-<% end %>
+<fieldset>
+  <% if @shelf.new_record? %>
+    <legend>Create New Shelf</legend>
+  <% else %>
+    <h2>Edit Shelf</h2>
+  <% end %>
+  <%= form_for @shelf do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.submit %>
+  <% end %>
+</fieldset>
 <br><br>
 
 <% @shelves.each do |shelf| %>
-  <div>
-    <h2> <%= shelf.name %> Shelf </h2>
+  <fieldset>
+    
+    <legend> <%= shelf.name %> Shelf </legend>
     <% unless shelf.name == "Reading" || shelf.name == "Finished Reading" %>
       <%= link_to "Edit Name", edit_shelf_path(shelf) %>
       <%= link_to "Delete", shelf, method: :delete, data: { confirm: "Are you sure? Any books under this shelf will also be removed." } %>
-    <% end %>
-    
+    <% end %>    
 
     <% shelf.books.each do |book| %>
       <div>
@@ -36,14 +43,13 @@
           <%= f.select :status, ['Currently Reading', 'Plan to Read', 'On Hold', 'Finished', 'Dropped'] %>
           <%= f.label :shelf_id %>
           <%= f.collection_select :shelf_id, current_user.shelves, :id, :name %>
-
           <%= f.submit "Update" %>
         <% end %>
       </div>
       <br><br>
     <% end %>
 
-  </div>
+  </fieldset>
   <br><br>
 <% end %>
 <br><br>

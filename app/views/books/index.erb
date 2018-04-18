@@ -9,7 +9,7 @@
     <% if user_signed_in? %>
       <%= form_for book.shelved_books.new do |f| %>
         <%= f.collection_select :shelf_id, current_user.shelves, :id, :name %>
-        <%= hidden_field_tag "shelved_book[book_id]", book.id %>
+        <%= f.hidden_field :book_id %>
         <%= f.submit "Add Book to Shelf" %>
       <% end %>
     <% end %>

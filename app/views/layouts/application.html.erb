@@ -18,15 +18,18 @@
           <%= link_to "Your Shelves", user_shelves_path(current_user) %>
           <%= link_to "Sign Out", destroy_user_session_path, method: 'delete' %>
         <% else %>
+          <%= link_to "Home", root_path %>
           <%= link_to "Login", new_user_session_path %>
           <%= link_to "Sign Up", new_user_registration_path %>
         <% end %>
       </ul>
     </nav>
     <% if !flash.empty? %>
-    <h1>Alert!</h1>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+    <div class="flash">
+      <h1>Alert!</h1>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+    </div>
     <% end %>
 
     <%= yield %>

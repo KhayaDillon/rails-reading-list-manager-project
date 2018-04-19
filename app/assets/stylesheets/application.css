@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+
+ div.left {
+   float: left;
+   padding-left: 1.5em;
+ }
+
+ .flash {
+  padding: 2px 1em;
+  border-left: 1.6em solid maroon;
+  background-color: linen;
+}

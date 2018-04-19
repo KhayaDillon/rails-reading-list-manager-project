@@ -38,7 +38,7 @@
         <br><br>
         <%= form_for book.shelved_location do |f| %>
           <%= f.label :current_page %>
-          <%= f.number_field :current_page, in: 0.0..book.page_count %>
+          <%= f.number_field :current_page, in: 0.0..book.page_count, required: true %>
           <%= f.label :status %>
           <%= f.select :status, ['Currently Reading', 'Plan to Read', 'On Hold', 'Finished', 'Dropped'] %>
           <%= f.label :shelf_id %>

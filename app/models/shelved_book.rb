@@ -1,6 +1,7 @@
 class ShelvedBook < ApplicationRecord
   belongs_to :shelf
   belongs_to :book
+  validates :current_page, :status, presence: true
 
   def shelf_name
     self.shelf.name 

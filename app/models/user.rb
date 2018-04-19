@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :shelves
   has_many :shelved_books, through: :shelves
   has_many :books, through: :shelved_books
-  #has_one :current_shelf, class_name: "ShelvedBook", dependent: :destroy
+  validates :name, presence: true
 
   after_create do |user|
     user.create_default_shelves
@@ -20,6 +20,10 @@ class User < ApplicationRecord
 
   def has_book?(title)
     self.books.any? { |book| book.title == title }
+  end
+
+  def has_shelf?(shelf)
+    self.shelves.any? { |user_shelf| user_shelf.name == shelf.name }
   end
 
   def pages_read

@@ -9,11 +9,11 @@
   <% if @shelf.new_record? %>
     <legend>Create New Shelf</legend>
   <% else %>
-    <h2>Edit Shelf</h2>
+    <legend>Edit Shelf</legend>
   <% end %>
   <%= form_for @shelf do |f| %>
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, required: true %>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.submit %>
   <% end %>

@@ -19,7 +19,7 @@
    padding-left: 1.5em;
  }
 
- .flash {
+ .flash, #error_explanation {
   padding: 2px 1em;
   border-left: 1.6em solid maroon;
   background-color: linen;

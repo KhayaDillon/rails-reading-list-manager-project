@@ -9,8 +9,13 @@ class ShelvesController < ApplicationController
   end
 
   def create 
-    shelf = Shelf.create(shelf_params)
-    redirect_to user_shelves_path(current_user, anchor: "#{shelf.id}")
+    shelf = Shelf.new(shelf_params)
+    if current_user.has_shelf?(shelf)
+      redirect_to user_shelves_path(current_user), notice: "You already have a shelf with this name."
+    else 
+      shelf.save 
+      redirect_to user_shelves_path(current_user, anchor: "#{shelf.id}")
+    end
   end 
 
   def edit
@@ -21,8 +26,16 @@ class ShelvesController < ApplicationController
 
   def update
     shelf = Shelf.find(params[:id])
-    shelf.update(shelf_params)
-    redirect_to user_shelves_path(current_user)
+    old_name = shelf.name
+    shelf.name = params[:shelf][:name]
+    if current_user.has_shelf?(shelf) && old_name != shelf.name
+      shelf.name = old_name
+      shelf.save
+      redirect_to user_shelves_path(current_user), notice: "You already have a shelf with this name."
+    else   
+      shelf.save  
+      redirect_to user_shelves_path(current_user, anchor: "#{shelf.id}")
+    end
   end
 
   def destroy

@@ -20,7 +20,7 @@ class ShelvedBooksController < ApplicationController
     shelved_book = ShelvedBook.find(params[:id])
     old_stats = shelved_book.dup
     shelved_book.update(shelved_book_params)
-
+    
     #When book is on Finished shelf and only the status gets changed
     if shelved_book.shelf_name == "Finished Reading" && shelved_book.shelf_name == old_stats.shelf_name && shelved_book.status != "Finished" && shelved_book.status != "Dropped" 
       #If current page has not been appropriately lowered, don't change status
@@ -41,7 +41,7 @@ class ShelvedBooksController < ApplicationController
       if shelved_book.status == old_stats.status 
         shelved_book.status = "Finished"  
       #If the user had also altered the status, and it's not Finished
-      elsif shelved_book.status != "Finished"
+      elsif shelved_book.status != "Finished" && shelved_book.status != "Dropped"
         flash[:alert] = "You can't put a book that is not finished on your Finished Reading Shelf. Please change the book's status."
         shelved_book.set_shelf(current_user, old_stats.shelf_name)
       end
@@ -71,7 +71,7 @@ class ShelvedBooksController < ApplicationController
       end
     when "Dropped" 
       book = shelved_book.book
-      shelved_book.delete
+      shelved_book.destroy
       flash[:notice] = "#{book.title} has been removed from your shelves."
       book.delete
     end

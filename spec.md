@@ -11,13 +11,17 @@ Specs:
       --A Shelf has many Books through ShelvedBooks
       --A Book has many Shelves through ShelvedBooks
       --A User has many Books through ShelvedBooks
-- [ ] The "through" part of the has_many through includes at least one user submittable attribute (attribute_name e.g. ingredients.quantity)
+- [x] The "through" part of the has_many through includes at least one user submittable attribute (attribute_name e.g. ingredients.quantity)
       --ShelvedBook join table has a current_page and a status, which the user adjusts
-- [ ] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
-- [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
-- [ ] Include signup (how e.g. Devise)
-- [ ] Include login (how e.g. Devise)
-- [ ] Include logout (how e.g. Devise)
+- [x] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
+      --All models have validations requiring essential attributes to be present
+- [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+      --User model #pages_read shows the total number of pages they have read by adding all the user's book's current pages. 
+      --Book model #pages_left shows number of pages left by subtracting the current page from a book's page count.
+- [x] Include signup (how e.g. Devise)
+- [x] Include login (how e.g. Devise)
+- [x] Include logout (how e.g. Devise)
+      --Used devise by adding gem, installing it, then generating devise User. Added 'name' attribute by adding it to migration, generating views, and then customizing the forms.  
 - [ ] Include third party signup/login (how e.g. Devise/OmniAuth)
 - [ ] Include nested resource show or index (URL e.g. users/2/recipes)
 - [ ] Include nested resource "new" form (URL e.g. recipes/1/ingredients)

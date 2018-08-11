@@ -4,13 +4,7 @@ class ShelvedBooksController < ApplicationController
     if current_user.has_book?(shelved_book.title)
       redirect_to books_path, notice: "You already have this book."
     else
-      if shelved_book.shelf_name == "Finished Reading"
-        shelved_book.update(status: "Finished", current_page: shelved_book.page_count)
-      else
-        shelved_book.update(status: "Plan to Read")
-      end
-      shelved_book.save
-      shelved_book.current_location = shelved_book
+      BookOrganizer.take_out(shelved_book)
 
       redirect_to user_shelves_path(current_user)
     end
@@ -20,32 +14,14 @@ class ShelvedBooksController < ApplicationController
     shelved_book = ShelvedBook.find(params[:id])
     old_stats = shelved_book.dup
     shelved_book.update(shelved_book_params)
+
+    book_info = {updated: shelved_book, old: old_stats, owner: current_user}
     
-    #When book is on Finished shelf and only the status gets changed
-    if shelved_book.shelf_name == "Finished Reading" && shelved_book.shelf_name == old_stats.shelf_name && shelved_book.status != "Finished" && shelved_book.status != "Dropped" 
-      #If current page has not been appropriately lowered, don't change status
-      if shelved_book.current_page == shelved_book.page_count
-        shelved_book.status = "Finished" 
-        flash[:alert] = "Your book's status is no longer finished? Then your current page can't be the last page. Please update your current page accordingly."
-      #Move to Reading shelf if shelf is not given, but status and current page has been adjusted appropriately
-      else 
-        shelved_book.set_shelf(current_user, "Reading")
-      end
-    #When the status has been left to Finished but the shelf has been changed to Reading
-    elsif shelved_book.status == "Finished" && shelved_book.status == old_stats.status && shelved_book.shelf_name == "Reading"
-      shelved_book.set_shelf(current_user, old_stats.shelf_name)
-      flash[:alert] = "Books you have finished can't be put on your Reading Shelf. Please update your status and current page."
-    #When user changes the shelf to Finished
-    elsif shelved_book.shelf_name == "Finished Reading" && shelved_book.shelf_name != old_stats.shelf_name
-      #If user has not altered book status 
-      if shelved_book.status == old_stats.status 
-        shelved_book.status = "Finished"  
-      #If the user had also altered the status, and it's not Finished
-      elsif shelved_book.status != "Finished" && shelved_book.status != "Dropped"
-        flash[:alert] = "You can't put a book that is not finished on your Finished Reading Shelf. Please change the book's status."
-        shelved_book.set_shelf(current_user, old_stats.shelf_name)
-      end
-    end
+    BookOrganizer.status_change_from_fin_shelf(book_info, flash)
+
+    BookOrganizer.shelf_set_to_read_with_fin_status(book_info, flash)
+
+    BookOrganizer.shelf_set_to_fin(book_info, flash)
 
     case shelved_book.status
     when "Finished" 

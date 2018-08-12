@@ -17,40 +17,13 @@ class ShelvedBooksController < ApplicationController
 
     book_info = {updated: shelved_book, old: old_stats, owner: current_user}
     
-    BookOrganizer.status_change_from_fin_shelf(book_info, flash)
+    BookShelfOrganizer.status_change_from_fin_shelf(book_info, flash)
 
-    BookOrganizer.shelf_set_to_read_with_fin_status(book_info, flash)
+    BookShelfOrganizer.shelf_set_to_read_with_fin_status(book_info, flash)
 
-    BookOrganizer.shelf_set_to_fin(book_info, flash)
+    BookShelfOrganizer.shelf_set_to_fin(book_info, flash)
 
-    case shelved_book.status
-    when "Finished" 
-      if shelved_book.current_page != shelved_book.page_count
-        shelved_book.current_page = shelved_book.page_count
-        flash[:notice] = "Books you have finished can't have pages left to read. Current page has been set to last page."
-      end
-      shelved_book.set_shelf(current_user, "Finished Reading") if shelved_book.shelf_name == "Reading"
-    when "On Hold", "Currently Reading"
-      if shelved_book.current_page == shelved_book.page_count
-        shelved_book.set_shelf(current_user, old_stats.shelf_name)
-        shelved_book.status = old_stats.status 
-        shelved_book.current_page = old_stats.current_page
-        flash[:notice] = "You can't put on hold or be currently reading a book you've finished. Please update your current page."
-      elsif shelved_book.current_page == 0
-        shelved_book.status = "Plan to Read"
-        flash[:notice] = "You can't put on hold or be currently reading a book you haven't started. Please update your current page. Status has been set to Plan to Read."
-      end
-    when "Plan to Read"
-      if shelved_book.current_page != 0
-        shelved_book.current_page = 0
-        flash[:notice] = "Books you plan to read can't have a current page. Current page has been changed to zero."
-      end
-    when "Dropped" 
-      book = shelved_book.book
-      shelved_book.destroy
-      flash[:notice] = "#{book.title} has been removed from your shelves."
-      book.delete
-    end
+    BookShelfOrganizer.set_status(book_info, flash)
  
     if shelved_book
       shelved_book.save

@@ -19,13 +19,9 @@ class ShelvedBook < ApplicationRecord
     self.book.title
   end 
 
-  def current_location
-    self.book.shelved_location
-  end 
-
-  def current_location=(shelved_book)
-    self.book.shelved_location = shelved_book
-  end 
+  #def current_location
+  #  self.book.shelved_location || self.book.shelved_location = self
+  #end 
 
   def pages_left
     self.page_count - self.current_page

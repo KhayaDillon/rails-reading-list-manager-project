@@ -4,7 +4,7 @@ class ShelvedBooksController < ApplicationController
     if current_user.has_book?(shelved_book.title)
       redirect_to books_path, notice: "You already have this book."
     else
-      BookOrganizer.take_out(shelved_book)
+      BookShelfOrganizer.take_out(shelved_book)
 
       redirect_to user_shelves_path(current_user)
     end

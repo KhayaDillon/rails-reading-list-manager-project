@@ -7,7 +7,8 @@ class BookShelfOrganizer
       book.update(status: "Plan to Read")
     end
     book.save
-    book.current_location = book
+
+    #book.current_location
   end
 
   def self.status_change_from_fin_shelf(book, message)

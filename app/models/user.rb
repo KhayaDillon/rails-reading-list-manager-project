@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, omniauth_providers: %i[facebook]
+         :omniauthable, omniauth_providers: [:facebook]
 
   has_many :shelves
   has_many :shelved_books, through: :shelves
@@ -23,7 +23,8 @@ class User < ApplicationRecord
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
-      user.name = auth.info.name   # assuming the user model has a name
+      parse_name(user, auth.info.name)
+      #user.name = auth.info.name   # assuming the user model has a name
       # If you are using confirmable and the provider(s) you use validate emails, 
       # uncomment the line below to skip the confirmation emails.
       #user.skip_confirmation!
@@ -52,6 +53,13 @@ class User < ApplicationRecord
       n += book.current_page
     end 
     n
+  end
+
+private
+  def self.parse_name(user, name)
+    name_arr = name.split(“ “)
+    user.last_name = name_arr.pop
+    user.first_name = name_arr.join(“ “)
   end
 
 end

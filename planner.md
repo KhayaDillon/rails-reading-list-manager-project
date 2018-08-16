@@ -94,5 +94,4 @@ adding a finished book from the library - shelf shouldn't be reading
 
 To Consider
 x-Should shelved_book delete be in update action?
-
-Home link on Library page when user is not logged in
+x-Home link on Library page when user is not logged in

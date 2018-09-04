@@ -22,13 +22,17 @@ Specs:
 - [x] Include login (how e.g. Devise)
 - [x] Include logout (how e.g. Devise)
       --Used devise by adding gem, installing it, then generating devise User. Added 'name' attribute by adding it to migration, generating views, and then customizing the forms.  
-- [ ] Include third party signup/login (how e.g. Devise/OmniAuth)
-- [ ] Include nested resource show or index (URL e.g. users/2/recipes)
-- [ ] Include nested resource "new" form (URL e.g. recipes/1/ingredients)
-- [ ] Include form display of validation errors (form URL e.g. /recipes/new)
+- [x] Include third party signup/login (how e.g. Devise/OmniAuth)
+      --Used Devise and Google omniauth with devise
+- [x] Include nested resource show or index (URL e.g. users/2/recipes)
+      --To view their shelves, users go to users/id/shelves
+- [o] Include nested resource "new" form (URL e.g. recipes/1/ingredients)
+      --Forms are on same page as the user's shelves, there isn't a seperate page for them, so unable to do 'users/id/shelves/new' or 'users/id/shelved_books/new'
+- [x] Include form display of validation errors (form URL e.g. /recipes/new)
+      --In shelf form the name must be present. Also can not be the same as the default shelf names, if so a css styled div with class name 'field_with_errors' displays the issue. The same div displays with any shelved_book create/update issues. 
 
 Confirm:
-- [ ] The application is pretty DRY
-- [ ] Limited logic in controllers
-- [ ] Views use helper methods if appropriate
-- [ ] Views use partials if appropriate
+- [x] The application is pretty DRY
+- [x] Limited logic in controllers
+- [x] Views use helper methods if appropriate
+- [x] Views use partials if appropriate

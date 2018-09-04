@@ -69,6 +69,8 @@ gem 'devise'
 
 gem 'nokogiri'
 
-gem 'omniauth'
-gem 'omniauth-facebook'
+# gem 'omniauth'
+# gem 'omniauth-facebook'
 gem 'dotenv-rails'
+
+gem 'omniauth-google-oauth2', '~> 0.2.2'

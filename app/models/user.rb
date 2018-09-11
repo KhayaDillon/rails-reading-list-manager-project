@@ -57,6 +57,10 @@ end
     n
   end
 
+  def recent_book
+    self.books.order("created_at").last
+  end
+
 private
   def self.parse_name(user, name)
     name_arr = name.split(“ “)

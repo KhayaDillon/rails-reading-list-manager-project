@@ -7,5 +7,6 @@ class Book < ApplicationRecord
   def pages_left
     self.page_count - self.shelved_location.current_page
   end
+
 end
  

@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root to: "static#home"
 
+  get "users/:id/recent_book", to: "books#recent_book"
+
   resources :users, only: [:show] do
     resources :shelves, only: [:index, :new]
   end 

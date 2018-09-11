@@ -1,0 +1,9 @@
+<fieldset>
+  <legend>Create New Shelf</legend>
+  <%= form_for @shelf do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name, required: true %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.submit %>
+  <% end %>
+</fieldset>

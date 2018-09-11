@@ -8,6 +8,10 @@ class ShelvesController < ApplicationController
     end 
   end
 
+  def new
+    @shelf = Shelf.new
+  end
+
   def create 
     shelf = Shelf.new(shelf_params)
     if current_user.has_shelf?(shelf)

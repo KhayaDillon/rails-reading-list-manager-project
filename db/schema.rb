@@ -54,9 +54,6 @@ ActiveRecord::Schema.define(version: 20180420020536) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "expires_at"
-    t.boolean "expires"
-    t.string "refresh_token"
     t.string "provider"
     t.string "uid"
     t.string "token"

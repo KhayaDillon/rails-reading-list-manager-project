@@ -8,7 +8,7 @@ To use this app, clone, run rake db:migrate, rake db:seed, and then run rail ser
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/yahyal0v3/sinatra-virtual-pet-project. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/yahyal0v3/rails-reading-list-manager-project. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 

@@ -2,6 +2,9 @@ class BooksController < ApplicationController
   def index
     if params[:search]
         resp = Faraday.get 'https://www.googleapis.com/books/v1/volumes' do |req|
+          req.params['printType'] = "books"
+          req.params['maxResults'] = "40"
+          req.params['orderBy'] = "relevance"
           req.params['q'] = params[:search]
           req.params['key'] = ENV['API_KEY']
         end

@@ -1,25 +1,32 @@
 <h1>Library</h1>
 
-  <%= form_tag(books_path) do %>
+  <%= form_tag(books_path, method: "get") do %>
   	<%= label_tag :search %>
   	<%= text_field_tag :search %>
-  	<%= submit_tag 'Search' %>
+  	<%= submit_tag 'Search Books' %>
   <% end %>
 
   <% if @books %>
-	  <% @books["volumeInfo"].each do |book| %>
-	    <h4><%= book["title"] %></h4>
-	    By: <%= book["author"][0] %><br>
-	    Genre: <%= book["categories"] %><br>
-	    Page Count: <%= book["pageCount"] %>
+	<% @books.each do |book| %>
+		<%= image_tag(book["volumeInfo"]["imageLinks"]["thumbnail"]) %>
+	    <h4><%= book["volumeInfo"]["title"] %></h4>
+	    By: <%= book["volumeInfo"]["authors"][0] %><br>
+	    Genre: <%= book["volumeInfo"]["categories"][0] %><br>
+	    Page Count: <%= book["volumeInfo"]["pageCount"] %>
+	    <%= link_to "Preview", book["volumeInfo"]["previewLink"] %>
 	    <br><br>
 	    <% if user_signed_in? %>
-	      <%= form_for book.shelved_books.new do |f| %>
-	        <%= f.collection_select :shelf_id, current_user.shelves, :id, :name %>
-	        <%= f.hidden_field :book_id %>
-	        <%= f.submit "Add Book to Shelf" %>
+	      <%= form_tag(shelved_books_path) do %>
+	        <%= collection_select :shelf, :id, current_user.shelves, :id, :name %>
+	        <%= hidden_field_tag "book[title]", book["volumeInfo"]["title"] %>
+	        <%= hidden_field_tag "book[author]", book["volumeInfo"]["authors"][0] %>
+	        <%= hidden_field_tag "book[genre]", book["volumeInfo"]["categories"][0] %>
+	        <%= hidden_field_tag "book[cover]", book["volumeInfo"]["imageLinks"]["thumbnail"] %>
+	        <%= hidden_field_tag "book[preview]", book["volumeInfo"]["previewLink"] %>
+	        <%= hidden_field_tag "book[page_count]", book["volumeInfo"]["pageCount"] %>
+	        <%= submit_tag "Add Book to Shelf" %>
 	      <% end %>
 	    <% end %>
-  <% end %>	    
+	<% end %>	    
     <br><br>
   <% end %>

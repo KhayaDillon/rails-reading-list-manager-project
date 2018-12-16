@@ -312,6 +312,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   factory_girl_rails
+  faraday
   guard-rspec
   jbuilder (~> 2.5)
   launchy

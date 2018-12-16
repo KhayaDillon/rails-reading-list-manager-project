@@ -34,14 +34,13 @@ class ShelvedBooksController < ApplicationController
 
   private
     def shelved_book_new_hash
-      shelf = Shelf.find(params[:shelved_book][:shelf_id])
-      book = Book.find(params[:shelved_book][:book_id])
-      book_copy = book.dup
-      book_copy.save
-      {shelf_id: shelf.id, book_id: book_copy.id}
+      shelf = Shelf.find(params[:shelf][:id])
+      book = Book.find(params[:book][:id])
+      {shelf_id: shelf.id, book_id: book.id}
     end 
 
     def shelved_book_params
       params.require(:shelved_book).permit(:shelf_id, :book_id, :current_page, :status)
     end 
+
 end

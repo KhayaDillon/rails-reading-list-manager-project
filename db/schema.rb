@@ -17,6 +17,8 @@ ActiveRecord::Schema.define(version: 20180420020536) do
     t.string "author"
     t.string "genre"
     t.integer "page_count"
+    t.string "cover"
+    t.string "preview"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

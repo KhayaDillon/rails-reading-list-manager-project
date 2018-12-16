@@ -1,17 +1,25 @@
 <h1>Library</h1>
 
-  <% @books.each do |book| %>
-    <h4><%= book.title %></h4>
-    By: <%= book.author %><br>
-    Genre: <%= book.genre %><br>
-    Page Count: <%= book.page_count %>
-    <br><br>
-    <% if user_signed_in? %>
-      <%= form_for book.shelved_books.new do |f| %>
-        <%= f.collection_select :shelf_id, current_user.shelves, :id, :name %>
-        <%= f.hidden_field :book_id %>
-        <%= f.submit "Add Book to Shelf" %>
-      <% end %>
-    <% end %>
+  <%= form_tag(books_path) do %>
+  	<%= label_tag :search %>
+  	<%= text_field_tag :search %>
+  	<%= submit_tag 'Search' %>
+  <% end %>
+
+  <% if @books %>
+	  <% @books["volumeInfo"].each do |book| %>
+	    <h4><%= book["title"] %></h4>
+	    By: <%= book["author"][0] %><br>
+	    Genre: <%= book["categories"] %><br>
+	    Page Count: <%= book["pageCount"] %>
+	    <br><br>
+	    <% if user_signed_in? %>
+	      <%= form_for book.shelved_books.new do |f| %>
+	        <%= f.collection_select :shelf_id, current_user.shelves, :id, :name %>
+	        <%= f.hidden_field :book_id %>
+	        <%= f.submit "Add Book to Shelf" %>
+	      <% end %>
+	    <% end %>
+  <% end %>	    
     <br><br>
   <% end %>

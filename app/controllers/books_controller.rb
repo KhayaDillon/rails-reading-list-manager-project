@@ -7,7 +7,10 @@ class BooksController < ApplicationController
         end
         
         body_hash = JSON.parse(resp.body)
-        @books = body_hash["items"]
+        @books = body_hash["items"].select do |book|
+          volume = book["volumeInfo"]
+          !!volume["authors"] && !!volume["pageCount"] && !!volume["imageLinks"]["thumbnail"] && !!volume["categories"]
+        end
     end
   end
 

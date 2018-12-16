@@ -7,13 +7,20 @@ class BooksController < ApplicationController
           req.params['orderBy'] = "relevance"
           req.params['q'] = params[:search]
           req.params['key'] = ENV['API_KEY']
-        end
-        
-        body_hash = JSON.parse(resp.body)
-        @books = body_hash["items"].select do |book|
-          volume = book["volumeInfo"]
-          !!volume["authors"] && !!volume["pageCount"] && !!volume["imageLinks"]["thumbnail"] && !!volume["categories"]
-        end
+        end    
+    else
+      resp = Faraday.get 'https://www.googleapis.com/books/v1/volumes' do |req|
+        req.params['printType'] = "books"
+        req.params['maxResults'] = "40"
+        req.params['q'] = "popular books of the year"
+        req.params['key'] = ENV['API_KEY']
+      end
+    end
+    
+    body_hash = JSON.parse(resp.body)
+    @books = body_hash["items"].select do |book|
+       volume = book["volumeInfo"]
+       !!volume["authors"] && !!volume["pageCount"] && !!volume["imageLinks"]["thumbnail"] && !!volume["categories"]
     end
   end
 

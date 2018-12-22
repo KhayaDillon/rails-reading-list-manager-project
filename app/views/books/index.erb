@@ -6,33 +6,32 @@
   	<%= submit_tag 'Search Books' %>
   <% end %>
 
-  <% if @books %>
-	<% @books.each do |book| %>
-		<div onmouseenter="presentBookInfo(this)" >
-			<%= image_tag(book["volumeInfo"]["imageLinks"]["thumbnail"]) %>
+  <div id="library">
+  <% @books.each do |book| %>
+  	<div class="book-div" onmouseenter="presentBookInfo(this)" onmouseleave="hideBookInfo(this)" >
+		<%= image_tag(book["volumeInfo"]["imageLinks"]["thumbnail"]) %>
 		    
-		    <div class="book-info hidden">
-			    <h4><%= book["volumeInfo"]["title"] %></h4>
-			    By: <%= book["volumeInfo"]["authors"][0] %><br>
-			    Genre: <%= book["volumeInfo"]["categories"][0] %><br>
-			    Page Count: <%= book["volumeInfo"]["pageCount"] %>
-			    <%= link_to "Preview", book["volumeInfo"]["previewLink"] %>
-			    <br><br>
-			    <% if user_signed_in? %>
-			      <%= form_tag(shelved_books_path) do %>
-			        <%= collection_select :shelf, :id, current_user.shelves, :id, :name %>
-			        <%= hidden_field_tag "book[title]", book["volumeInfo"]["title"] %>
-			        <%= hidden_field_tag "book[author]", book["volumeInfo"]["authors"][0] %>
-			        <%= hidden_field_tag "book[genre]", book["volumeInfo"]["categories"][0] %>
-			        <%= hidden_field_tag "book[cover]", book["volumeInfo"]["imageLinks"]["thumbnail"] %>
-			        <%= hidden_field_tag "book[preview]", book["volumeInfo"]["previewLink"] %>
-			        <%= hidden_field_tag "book[page_count]", book["volumeInfo"]["pageCount"] %>
-			        <%= submit_tag "Add Book to Shelf" %>
-			      <% end %>
-			    <% end %>
-		    </div>
+	    <div class="book-info hidden">
+		    <h4><%= book["volumeInfo"]["title"] %></h4>
+		    By: <%= book["volumeInfo"]["authors"][0] %><br>
+		    Genre: <%= book["volumeInfo"]["categories"][0] %><br>
+		    Page Count: <%= book["volumeInfo"]["pageCount"] %>
+		    <%= link_to "Preview", book["volumeInfo"]["previewLink"] %>
+		    <br><br>
+		    <% if user_signed_in? %>
+		      <%= form_tag(shelved_books_path) do %>
+		        <%= collection_select :shelf, :id, current_user.shelves, :id, :name %>
+		        <%= hidden_field_tag "book[title]", book["volumeInfo"]["title"] %>
+		        <%= hidden_field_tag "book[author]", book["volumeInfo"]["authors"][0] %>
+		        <%= hidden_field_tag "book[genre]", book["volumeInfo"]["categories"][0] %>
+		        <%= hidden_field_tag "book[cover]", book["volumeInfo"]["imageLinks"]["thumbnail"] %>
+		        <%= hidden_field_tag "book[preview]", book["volumeInfo"]["previewLink"] %>
+		        <%= hidden_field_tag "book[page_count]", book["volumeInfo"]["pageCount"] %>
+		        <%= submit_tag "Add Book to Shelf" %>
+		      <% end %>
+		    <% end %>
+	    </div>
 		    
-		</div>	   
-	<% end %>	    
-    <br><br>
-  <% end %>
+	</div>	   
+  <% end %>	 
+  </div>

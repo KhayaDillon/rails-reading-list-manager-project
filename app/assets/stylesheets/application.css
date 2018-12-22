@@ -21,6 +21,11 @@
 	padding: 0;
 }
 
+html {
+	max-width: 100%;
+	overflow-x: hidden;
+}
+
 a {
 	text-decoration: none;
 }
@@ -93,6 +98,19 @@ footer {
 
 /* Books and Shelves Styles */
 
+#library {
+	display: flex;
+	flex-flow: row wrap;
+	margin: 40px auto;
+	justify-content: center;
+	width: 100%;
+}
+
+.book-div {
+	flex: 1 1 150px;
+	padding: 20px;
+}
+
 .book-info {
 	position: fixed;
 	bottom: 0;
@@ -106,4 +124,5 @@ footer {
 .hidden {
 	display: none;
 }
+
 

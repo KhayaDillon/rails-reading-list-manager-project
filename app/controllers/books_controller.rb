@@ -18,10 +18,12 @@ class BooksController < ApplicationController
     end
     
     body_hash = JSON.parse(resp.body)
-    @books = body_hash["items"].select do |book|
+    books = body_hash["items"].select do |book|
        volume = book["volumeInfo"]
        !!volume["authors"] && !!volume["pageCount"] && !!volume["imageLinks"]["thumbnail"] && !!volume["categories"]
     end
+    
+    @books = books.uniq { |b| b["volumeInfo"]["title"] }
   end
 
   def recent_book

@@ -31,6 +31,8 @@
 
     <% shelf.books.each do |book| %>
       <div>
+      	<%= image_tag(book.cover) %>
+      	<%= link_to("Preview", book.preview) %>
         <h4><%= book.title %></h4>
         By: <%= book.author %><br>
         Genre: <%= book.genre %><br>

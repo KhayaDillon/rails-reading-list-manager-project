@@ -1,3 +1,7 @@
+/* line 5, C:/Users/yahya/coding/rails-reading-list-manager-project/app/assets/stylesheets/shelves.scss */
+legend {
+  font-size: 1.7em;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -10,11 +14,12 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
+
+
  */
 
 /* General Styles */
+
 
 * {
 	margin: 0;
@@ -89,21 +94,3 @@ footer {
 	top: 32%;
 	left: 46%;
 }
-
-
-/* Books and Shelves Styles */
-
-.book-info {
-	position: fixed;
-	bottom: 0;
-	z-index: 100;
-}
-
-.visible {
-	display: block;
-}
-
-.hidden {
-	display: none;
-}
-

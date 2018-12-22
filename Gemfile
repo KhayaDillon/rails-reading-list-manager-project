@@ -75,3 +75,5 @@ gem 'dotenv-rails'
 gem 'omniauth-google-oauth2', '~> 0.2.2'
 
 gem 'faraday'
+
+gem 'jquery-rails'

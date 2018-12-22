@@ -102,13 +102,13 @@ footer {
 	display: flex;
 	flex-flow: row wrap;
 	margin: 40px auto;
-	justify-content: center;
 	width: 100%;
 }
 
-.book-div {
+.book-cover {
 	flex: 1 1 150px;
-	padding: 20px;
+	text-align: center;
+	padding: 15px;
 }
 
 .book-info {

@@ -8,16 +8,20 @@
 
   <div id="library">
   <% @books.each do |book| %>
-  	<div class="book-cover" onmouseenter="presentBookInfo(this)" onmouseleave="hideBookInfo(this)" >
+  	<div class="book-cover" onmouseenter="presentBookInfo(this)" onclick="selectBook(this)">
 		<%= image_tag(book["volumeInfo"]["imageLinks"]["thumbnail"]) %>   
 	</div>	   
 	<div class="book-info hidden">
-	    <h4><%= book["volumeInfo"]["title"] %></h4>
-	    By: <%= book["volumeInfo"]["authors"][0] %><br>
-	    Genre: <%= book["volumeInfo"]["categories"][0] %><br>
-	    Page Count: <%= book["volumeInfo"]["pageCount"] %>
-	    <%= link_to "Preview", book["volumeInfo"]["previewLink"] %>
-	    <br><br>
+		<div>
+		    <h4><%= book["volumeInfo"]["title"] %></h4>
+		    By: <%= book["volumeInfo"]["authors"][0] %><br>
+		    Genre: <%= book["volumeInfo"]["categories"][0] %><br>
+		    Page Count: <%= book["volumeInfo"]["pageCount"] %>
+		</div>
+		<div>
+	    	<%= link_to "Preview", book["volumeInfo"]["previewLink"] %>
+	    </div>
+	    <div>
 	    <% if user_signed_in? %>
 	      <%= form_tag(shelved_books_path) do %>
 	        <%= collection_select :shelf, :id, current_user.shelves, :id, :name %>
@@ -30,6 +34,7 @@
 	        <%= submit_tag "Add Book to Shelf" %>
 	      <% end %>
 	    <% end %>
+	    </div>
     </div>
   <% end %>	 
   </div>

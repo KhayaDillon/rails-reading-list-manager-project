@@ -1,26 +1,43 @@
-//const bookCoverDivs = document.querySelectorAll(".book-cover")
 
-function presentBookInfo(book) {
-	bookInfo = book.nextElementSibling
-	bookInfo.classList.remove("hidden")
-	mouseLeaveAction(book, "hover")
+function addListeners() {
+	const bookCoverDivs = document.querySelectorAll(".book-cover") 
+	
+	bookCoverDivs.forEach( book => {
+		book.addEventListener("mouseenter", presentBookInfo)
+		book.addEventListener("mouseleave", hideBookInfo)
+		book.addEventListener("click", selectBook)
+	})
 }
 
-function hideBookInfo(book) {
-	bookInfo = book.nextElementSibling
+function selectBook() {
+	const book = this
+	const bookCoverDivs = document.querySelectorAll(".book-cover") 
+	const body = document.querySelector("body")
+	
+	presentBookInfo.call(book)
+	
+	bookCoverDivs.forEach( div => div.removeEventListener("mouseenter", presentBookInfo))
+	bookCoverDivs.forEach( div => div.removeEventListener("mouseleave", hideBookInfo))
+}
+
+function presentBookInfo() {
+	bookInfo = this.nextElementSibling
+	bookInfo.classList.remove("hidden")
+}
+
+function hideBookInfo() {
+	bookInfo = this.nextElementSibling
 	bookInfo.classList.add("hidden")
 }
-
-function selectBook(book) {
-	presentBookInfo(book)
-	mouseLeaveAction(book, "selection")
-}
-
-function mouseLeaveAction(book, action) {
-	if (action === "hover") {
-		book.addEventListener("mouseleave", function() {
-			console.log("hit")
-			hideBookInfo(book)
-		})	
-	} 
-}
+ 
+// function selectBook(book) {
+	// document.querySelectorAll(".book-cover").forEach( div => div.removeEventListener("mouseenter", presentBookInfo))
+// }
+// 
+// function mouseLeaveAction(book, action) {
+	// if (action === "hover") {
+		// book.addEventListener("mouseleave", function() {
+			// hideBookInfo(book)
+		// })	
+	// } 
+// }

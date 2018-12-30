@@ -8,7 +8,7 @@
 
   <div id="library">
   <% @books.each do |book| %>
-  	<div class="book-cover" onmouseenter="presentBookInfo(this)" onclick="selectBook(this)">
+  	<div class="book-cover" onload="addListeners();">
 		<%= image_tag(book["volumeInfo"]["imageLinks"]["thumbnail"]) %>   
 	</div>	   
 	<div class="book-info hidden">

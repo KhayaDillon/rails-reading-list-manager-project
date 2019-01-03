@@ -12,12 +12,15 @@ function addListeners() {
 function selectBook() {
 	const book = this
 	const bookCoverDivs = document.querySelectorAll(".book-cover") 
+	const downArrow = document.querySelectorAll(".down") 
 	const body = document.querySelector("body")
 	
 	presentBookInfo.call(book)
 	
 	bookCoverDivs.forEach( div => div.removeEventListener("mouseenter", presentBookInfo))
 	bookCoverDivs.forEach( div => div.removeEventListener("mouseleave", hideBookInfo))
+	
+	
 }
 
 function presentBookInfo() {

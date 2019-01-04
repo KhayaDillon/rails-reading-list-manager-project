@@ -1,8 +1,8 @@
 
 function addListeners() {
-	const bookCoverDivs = document.querySelectorAll(".book-cover") 
+	const bookCoverImgs = document.querySelectorAll(".book-cover") 
 	
-	bookCoverDivs.forEach( book => {
+	bookCoverImgs.forEach( book => {
 		book.addEventListener("mouseenter", presentBookInfo)
 		book.addEventListener("mouseleave", hideBookInfo)
 		book.addEventListener("click", selectBook)
@@ -11,14 +11,14 @@ function addListeners() {
 
 function selectBook() {
 	const book = this
-	const bookCoverDivs = document.querySelectorAll(".book-cover") 
+	const bookCoverImgs = document.querySelectorAll(".book-cover") 
 	const downArrow = document.querySelectorAll(".down") 
 	const body = document.querySelector("body")
 	
 	presentBookInfo.call(book)
 	
-	bookCoverDivs.forEach( div => div.removeEventListener("mouseenter", presentBookInfo))
-	bookCoverDivs.forEach( div => div.removeEventListener("mouseleave", hideBookInfo))
+	bookCoverImgs.forEach( div => div.removeEventListener("mouseenter", presentBookInfo))
+	bookCoverImgs.forEach( div => div.removeEventListener("mouseleave", hideBookInfo))
 	downArrow.forEach( arrow => arrow.addEventListener("click", function() {
 		hideBookInfo.call(book)
 		addListeners()

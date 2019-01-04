@@ -105,9 +105,13 @@ footer {
 	width: 100%;
 }
 
+#library div {
+	text-align: center;
+}
+
 .book-cover {
-	flex: 1 1 150px;
-	padding: 15px;
+	flex: 1 1 120px;
+	margin: 25px;
 	text-align: center;
 }
 

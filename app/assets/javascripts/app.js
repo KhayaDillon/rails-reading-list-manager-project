@@ -19,6 +19,11 @@ function selectBook() {
 	
 	bookCoverDivs.forEach( div => div.removeEventListener("mouseenter", presentBookInfo))
 	bookCoverDivs.forEach( div => div.removeEventListener("mouseleave", hideBookInfo))
+	downArrow.forEach( arrow => arrow.addEventListener("click", function() {
+		hideBookInfo.call(book)
+		addListeners()
+		
+	}))
 	
 	
 }

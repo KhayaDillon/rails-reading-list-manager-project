@@ -98,14 +98,14 @@ footer {
 
 /* Books and Shelves Styles */
 
-#library {
+.books {
 	display: flex;
 	flex-flow: row wrap;
 	margin: 40px auto;
 	width: 100%;
 }
 
-#library div {
+.books div {
 	text-align: center;
 }
 
@@ -124,15 +124,6 @@ footer {
 	margin: 0px auto;
 }
 
-.book-info div {
-	float: left;
-	width: 23%;
-	text-align: center;
-	padding-top: 2em;
-	height: 90px;
-	position: relative;
-}
-
 .book-info h4 {
 	color: #9D0303;
 }
@@ -147,8 +138,7 @@ footer {
 	cursor: pointer;	
 	position: absolute;
 	top: 10px;
-	right: 5%;
-	z-index: 100; 
+	right: 3%;
 }
 
 .visible {
@@ -158,5 +148,20 @@ footer {
 .hidden {
 	display: none;
 }
+
+
+/* Library Styles */
+
+.book-info div {
+	float: left;
+	width: 23%;
+	text-align: center;
+	padding-top: 2em;
+	height: 90px;
+	position: relative;
+}
+
+
+/* Shelves Styles */
 
 

@@ -9,6 +9,16 @@ function addListeners() {
 	})
 }
 
+function presentBookInfo() {
+	bookInfo = this.nextElementSibling
+	bookInfo.classList.remove("hidden")
+}
+
+function hideBookInfo() {
+	bookInfo = this.nextElementSibling
+	bookInfo.classList.add("hidden")
+}
+
 function selectBook() {
 	const book = this
 	const bookCoverImgs = document.querySelectorAll(".book-cover") 
@@ -23,29 +33,7 @@ function selectBook() {
 		hideBookInfo.call(book)
 		addListeners()
 		
-	}))
-	
-	
-}
-
-function presentBookInfo() {
-	bookInfo = this.nextElementSibling
-	bookInfo.classList.remove("hidden")
-}
-
-function hideBookInfo() {
-	bookInfo = this.nextElementSibling
-	bookInfo.classList.add("hidden")
+	}))	
 }
  
-// function selectBook(book) {
-	// document.querySelectorAll(".book-cover").forEach( div => div.removeEventListener("mouseenter", presentBookInfo))
-// }
-// 
-// function mouseLeaveAction(book, action) {
-	// if (action === "hover") {
-		// book.addEventListener("mouseleave", function() {
-			// hideBookInfo(book)
-		// })	
-	// } 
-// }
+

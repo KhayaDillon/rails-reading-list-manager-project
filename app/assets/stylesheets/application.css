@@ -172,3 +172,8 @@ footer {
 	background-image: url(http://i64.tinypic.com/2q222pu.jpg);
 	background-size: 783px;
 }
+
+#shelf-books .book-cover {
+	position: relative;
+	top: 20px;
+}

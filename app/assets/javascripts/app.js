@@ -10,12 +10,12 @@ function addListeners() {
 }
 
 function presentBookInfo() {
-	bookInfo = this.nextElementSibling
+	bookInfo = document.getElementById("book-" + this.id)
 	bookInfo.classList.remove("hidden")
 }
 
 function hideBookInfo() {
-	bookInfo = this.nextElementSibling
+	bookInfo = document.getElementById("book-" + this.id)
 	bookInfo.classList.add("hidden")
 }
 

@@ -6,7 +6,7 @@
   	<%= submit_tag 'Search Books' %>
   <% end %>
 
-  <div class="books">
+  <div id="library" class="books">
   	<div>
 	  <% @books.each do |book| %>
 		<%= image_tag(book["volumeInfo"]["imageLinks"]["thumbnail"], :class => "book-cover") %>      

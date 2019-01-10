@@ -113,6 +113,7 @@ footer {
 	flex: 1 1 120px;
 	margin: 25px;
 	text-align: center;
+	cursor: pointer;
 }
 
 .book-info {
@@ -120,8 +121,15 @@ footer {
 	bottom: 0;
 	z-index: 100;
 	background-color: #F9F8F7;
-	width: 100%;
 	margin: 0px auto;
+}
+
+.book-info div {
+	float: left;
+	text-align: center;
+	padding-top: 2em;
+	height: 90px;
+	position: relative;
 }
 
 .book-info h4 {
@@ -152,16 +160,15 @@ footer {
 
 /* Library Styles */
 
-.book-info div {
-	float: left;
+#library .book-info div {
 	width: 23%;
-	text-align: center;
-	padding-top: 2em;
-	height: 90px;
-	position: relative;
 }
 
 
 /* Shelves Styles */
 
-
+#shelf-books {
+	margin: 0em 400px;
+	background-image: url(http://i64.tinypic.com/2q222pu.jpg);
+	background-size: 783px;
+}

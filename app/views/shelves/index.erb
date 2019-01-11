@@ -39,23 +39,30 @@
 		  	
 	<% shelf.books.each do |book| %>
 	  	<div id="book-<%= book.id %>" class="book-info hidden no-margins">
-	      	<%= link_to("Preview", book.preview) %>
-	        <h4><%= book.title %></h4>
-	        By: <%= book.author %><br>
-	        Genre: <%= book.genre %><br>
-	        Pages Left: <%= book.pages_left %>
-	        <br><br>
-	        <%= form_for book.shelved_location do |f| %>
-	          <%= f.label :current_page %>
-	          <%= f.number_field :current_page, in: 0.0..book.page_count, required: true %>
-	          <%= f.label :status %>
-	          <%= f.select :status, ['Currently Reading', 'Plan to Read', 'On Hold', 'Finished', 'Dropped'] %>
-	          <%= f.label :shelf_id %>
-	          <%= f.collection_select :shelf_id, current_user.shelves, :id, :name %>
-	          <%= f.submit "Update" %>
-	        <% end %>
+	  		<div class="shelf-book-info-col">
+	  			<h4><%= book.title %></h4>
+	  		</div>
+	  		<div class="shelf-book-info-col">
+	  			By: <%= book.author %><br>
+		        Genre: <%= book.genre %><br>
+		        Pages Left: <%= book.pages_left %>
+	  		</div>
+	  		<div class="shelf-book-info-col">
+	      		<%= link_to("Preview", book.preview) %>
+	        </div>
+	        <div class="shelf-book-info-col">
+		        <%= form_for book.shelved_location do |f| %>
+		          <%= f.label :current_page %>
+		          <%= f.number_field :current_page, in: 0.0..book.page_count, required: true %>
+		          <%= f.label :status %>
+		          <%= f.select :status, ['Currently Reading', 'Plan to Read', 'On Hold', 'Finished', 'Dropped'] %>
+		          <%= f.label :shelf_id %>
+		          <%= f.collection_select :shelf_id, current_user.shelves, :id, :name %>
+		          <%= f.submit "Update" %>
+		        <% end %>
+		     </div> 
 	        
-	        <span class="down"></span>
+	         <span class="down"></span>
 	  	</div>     
 	<% end %>
 

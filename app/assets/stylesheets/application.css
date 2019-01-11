@@ -160,7 +160,7 @@ footer {
 
 /* Library Styles */
 
-#library .book-info div {
+.lib-book-info-col {
 	width: 23%;
 }
 
@@ -176,4 +176,23 @@ footer {
 #shelf-books .book-cover {
 	position: relative;
 	top: 20px;
+}
+
+.shelf-book-info-col {
+	width: 23%;
+}
+
+.shelf-book-info-col label {
+	display: inline-block;
+	text-align: left;
+	width: 160px;
+}
+
+.shelf-book-info-col select, .shelf-book-info-col input {
+	width: 130px;
+}
+
+input[type="submit"] {
+   width: 70px;
+   margin: 5px;
 }

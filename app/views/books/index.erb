@@ -9,8 +9,9 @@
   <div id="library" class="books">
   	<div>
 	  <% @books.each do |book| %>
-		<%= image_tag(book["volumeInfo"]["imageLinks"]["thumbnail"], :class => "book-cover") %>      
-		<div class="book-info hidden">
+		<%= image_tag(book["volumeInfo"]["imageLinks"]["thumbnail"], :class => "book-cover", :id => book["id"]) %>  
+		    
+		<div class="book-info hidden" id="book-<%= book["id"] %>">
 			<div>
 			    <h4><%= book["volumeInfo"]["title"] %></h4>
 			</div>

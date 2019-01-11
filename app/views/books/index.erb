@@ -1,14 +1,16 @@
-<h1>Library</h1>
+<h2>Library</h2>
 
-  <%= form_tag(books_path, method: "get") do %>
-  	<%= label_tag :search %>
-  	<%= text_field_tag :search %>
-  	<%= submit_tag 'Search Books' %>
-  <% end %>
+<div class="form">
+	<h3> Search Library </h3>
+	<%= form_tag(books_path, method: "get") do %>
+		<%= text_field_tag :search %>
+		<%= submit_tag 'Search' %>
+	<% end %>
+</div>
 
-  <div id="library" class="books">
+<div id="library" class="books">
   	<div>
-	  <% @books.each do |book| %>
+	<% @books.each do |book| %>
 		<%= image_tag(book["volumeInfo"]["imageLinks"]["thumbnail"], :class => "book-cover", :id => book["id"]) %>  
 		    
 		<div class="book-info hidden" id="book-<%= book["id"] %>">
@@ -39,6 +41,6 @@
 		    </div>
 		    <span class="down"></span>
 	    </div>
-	  <% end %>	 
+	<% end %>	 
   	</div>
-  </div>
+</div>

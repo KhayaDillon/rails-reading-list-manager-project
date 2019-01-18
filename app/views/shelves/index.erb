@@ -5,7 +5,7 @@
   <li>Amount of Pages Read: <strong><%= current_user.pages_read %></strong></li>
 </ul>
 
-<div class="form">
+<div class="form-div">
 	<% if @shelf.new_record? %>
 		<h3>Create New Shelf</h3>
 	<% else %>
@@ -19,6 +19,7 @@
 	<% end %>
 </div>
 
+<div id="user-shelves">
 <% @shelves.each do |shelf| %>
   <div class="shelf" id="<%=shelf.id%>">
     
@@ -71,3 +72,4 @@
 
   </div>
 <% end %>
+</div>

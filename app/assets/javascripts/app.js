@@ -14,10 +14,12 @@ function addBookPadding(bookCovers) {
 	bookCovers.forEach( cover => {
 		if (cover.clientHeight < 193) {
 			let padding = 193 - cover.clientHeight
-			cover.style.padding = `${padding}px`
+			cover.style.paddingTop = `${padding}px`
 		} else if (cover.clientHeight > 193) {
 			cover.style.height = "193px"
 		}
+		
+		cover.style.paddingBottom = "16.5px"
 	})
 }
 

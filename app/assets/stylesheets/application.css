@@ -101,10 +101,10 @@ h2 {
 	font-size: 2.5em;
 }
 
-.form {
+.form-div {
 	float: right;
 	width: 300px;
-	margin: 1.5em 3em 3em 0px;
+	padding: 1.5em 3em 0px 0px;
 	z-index: 200;
 }
 
@@ -115,6 +115,10 @@ h2 {
 
 
 /* Books and Shelves Styles */
+
+#library, #user-shelves {
+	margin: 100px 0px;
+}
 
 .books {
 	display: flex;

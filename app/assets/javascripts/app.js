@@ -1,11 +1,23 @@
 
 function addListeners() {
 	const bookCoverImgs = document.querySelectorAll(".book-cover") 
+	addBookPadding(bookCoverImgs)
 	
 	bookCoverImgs.forEach( book => {
 		book.addEventListener("mouseenter", presentBookInfo)
 		book.addEventListener("mouseleave", hideBookInfo)
 		book.addEventListener("click", selectBook)
+	})
+}
+
+function addBookPadding(bookCovers) {
+	bookCovers.forEach( cover => {
+		if (cover.clientHeight < 193) {
+			let padding = 193 - cover.clientHeight
+			cover.style.padding = `${padding}px`
+		} else if (cover.clientHeight > 193) {
+			cover.style.height = "193px"
+		}
 	})
 }
 

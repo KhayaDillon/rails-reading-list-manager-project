@@ -29,11 +29,15 @@
     <% end %>    
 
 	<div class="books">
-		<div id="shelf-books">
-	    	<% shelf.books.each do |book| %>
-		  		<%= image_tag(book.cover, :class => "book-cover", :id => book.id) %>
-		  	<% end %>
-		</div>
+		<% if shelf.books != [] %>
+			<div id="shelf-books">
+			    	<% shelf.books.each do |book| %>
+				  		<%= image_tag(book.cover, :class => "book-cover", :id => book.id) %>
+				  	<% end %>
+			</div>
+		<% else %>
+			<img id="empty-shelf" src="http://i65.tinypic.com/2i0ygyo.jpg" alt="" />
+		<% end %>
     </div> 
 		  	
 	<% shelf.books.each do |book| %>

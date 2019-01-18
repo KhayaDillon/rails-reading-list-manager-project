@@ -196,6 +196,12 @@ h2 {
 	top: 20px;
 }
 
+#empty-shelf {
+	width: 783px;
+	height: 250px;
+	margin: 0em 400px;
+}
+
 .shelf-book-info-col {
 	width: 23%;
 }

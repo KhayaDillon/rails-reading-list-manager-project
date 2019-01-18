@@ -1,9 +1,11 @@
 <h2>Your Shelves</h2>
 
-<ul>
-  <li>Amount of Books Out: <strong><%= current_user.books.count %></strong></li>
-  <li>Amount of Pages Read: <strong><%= current_user.pages_read %></strong></li>
-</ul>
+<div class="reading-status-div">
+	<ul>
+	  <li>Amount of Books Out: <strong><%= current_user.books.count %></strong></li>
+	  <li>Amount of Pages Read: <strong><%= current_user.pages_read %></strong></li>
+	</ul>
+</div>
 
 <div class="form-div">
 	<% if @shelf.new_record? %>
@@ -19,9 +21,9 @@
 	<% end %>
 </div>
 
-<div id="user-shelves">
+<div id="user-shelves-divs">
 <% @shelves.each do |shelf| %>
-  <div class="shelf" id="<%=shelf.id%>">
+  <div class="shelf-div" id="<%=shelf.id%>">
     
     <h3> <%= shelf.name %> Shelf </h3>
     <% unless shelf.name == "Reading" || shelf.name == "Finished Reading" %>
@@ -29,20 +31,20 @@
       <%= link_to "Delete", shelf, method: :delete, data: { confirm: "Are you sure? Any books under this shelf will also be removed." }, :class => "shelf-delete" %>
     <% end %>  
     
-	<div class="books">
+	<div class="books-div">
 		<% if shelf.books != [] %>
-			<div id="shelf-books">
+			<div id="shelf-books-div">
 		    	<% shelf.books.each do |book| %>
-			  		<%= image_tag(book.cover, :class => "book-cover", :id => book.id) %>
+			  		<%= image_tag(book.cover, :class => "book-cover-img", :id => book.id) %>
 			  	<% end %>
 			</div>
 		<% else %>
-			<img id="empty-shelf" src="http://i65.tinypic.com/2i0ygyo.jpg" alt="" />
+			<img id="empty-shelf-img" src="http://i65.tinypic.com/2i0ygyo.jpg" alt="" />
 		<% end %>
     </div> 
 		  	
 	<% shelf.books.each do |book| %>
-	  	<div id="book-<%= book.id %>" class="book-info hidden no-margins">
+	  	<div id="book-<%= book.id %>" class="book-info-div hidden no-margins">
 	  		<div class="shelf-book-info-col">
 	  			<h4><%= book.title %></h4>
 	  		</div>
@@ -66,7 +68,7 @@
 		        <% end %>
 		     </div> 
 	        
-	         <span class="down"></span>
+	         <span class="down-arrow"></span>
 	  	</div>     
 	<% end %>
 

@@ -116,29 +116,29 @@ h2 {
 
 /* Books and Shelves Styles */
 
-#library, #user-shelves {
+#library-div, #user-shelves-divs {
 	margin: 100px 0px;
 }
 
-.books {
+.books-div {
 	display: flex;
 	flex-flow: row wrap;
 	margin: 0px auto;
 	width: 100%;
 }
 
-.books div {
+.books-div div {
 	text-align: center;
 }
 
-.book-cover {
+.book-cover-img {
 	flex: 1 1 120px;
 	margin: 25px;
 	text-align: center;
 	cursor: pointer;
 }
 
-.book-info {
+.book-info-div {
 	position: fixed;
 	bottom: 0;
 	z-index: 100;
@@ -146,7 +146,7 @@ h2 {
 	margin: 0px auto;
 }
 
-.book-info div {
+.book-info-div div {
 	float: left;
 	text-align: center;
 	padding-top: 2em;
@@ -154,11 +154,11 @@ h2 {
 	position: relative;
 }
 
-.book-info h4 {
+.book-info-div h4 {
 	color: #9D0303;
 }
 
-.down {
+.down-arrow {
 	border-right: 3px solid black;
 	border-bottom: 3px solid black;
 	padding: 5px;
@@ -189,13 +189,17 @@ h2 {
 
 /* Shelves Styles */
 
-.shelf {
+.reading-status-div {
+	
+}
+
+.shelf-div {
 	margin: 40px 0px;
 	padding-top: 40px; 
 	position: relative;
 }
 
-.shelf h3 {
+.shelf-div h3 {
 	text-align: center;
 	font-size: 2em;
 	color: #745448;
@@ -222,18 +226,18 @@ h2 {
 	color: white;
 }
 
-#shelf-books {
+#shelf-books-div {
 	margin: 0px 400px;
 	background-image: url(http://i65.tinypic.com/2i0ygyo.jpg);
 	background-size: 783px;
 }
 
-#shelf-books .book-cover {
+#shelf-books-div .book-cover-img {
 	position: relative;
 	top: 20px;
 }
 
-#empty-shelf {
+#empty-shelf-img {
 	width: 783px;
 	height: 250px;
 	margin: 0px 400px;

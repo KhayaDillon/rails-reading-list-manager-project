@@ -8,12 +8,12 @@
 	<% end %>
 </div>
 
-<div id="library" class="books">
+<div id="library-div" class="books-div">
   	<div>
 	<% @books.each do |book| %>
-		<%= image_tag(book["volumeInfo"]["imageLinks"]["thumbnail"], :class => "book-cover", :id => book["id"]) %>  
+		<%= image_tag(book["volumeInfo"]["imageLinks"]["thumbnail"], :class => "book-cover-img", :id => book["id"]) %>  
 		    
-		<div class="book-info hidden" id="book-<%= book["id"] %>">
+		<div class="book-info-div hidden" id="book-<%= book["id"] %>">
 			<div class="lib-book-info-col">
 			    <h4><%= book["volumeInfo"]["title"] %></h4>
 			</div>
@@ -39,7 +39,7 @@
 		       <% end %>
 		     <% end %>
 		    </div>
-		    <span class="down"></span>
+		    <span class="down-arrow"></span>
 	    </div>
 	<% end %>	 
   	</div>

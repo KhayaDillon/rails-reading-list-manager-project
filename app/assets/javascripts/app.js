@@ -1,6 +1,6 @@
 
 function addListeners() {
-	const bookCoverImgs = document.querySelectorAll(".book-cover") 
+	const bookCoverImgs = document.querySelectorAll(".book-cover-img") 
 	addBookPadding(bookCoverImgs)
 	
 	bookCoverImgs.forEach( book => {
@@ -35,8 +35,8 @@ function hideBookInfo() {
 
 function selectBook() {
 	const book = this
-	const bookCoverImgs = document.querySelectorAll(".book-cover") 
-	const downArrow = document.querySelectorAll(".down") 
+	const bookCoverImgs = document.querySelectorAll(".book-cover-img") 
+	const downArrow = document.querySelectorAll(".down-arrow") 
 	const body = document.querySelector("body")
 	
 	presentBookInfo.call(book)

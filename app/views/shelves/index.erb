@@ -25,8 +25,8 @@
     
     <h3> <%= shelf.name %> Shelf </h3>
     <% unless shelf.name == "Reading" || shelf.name == "Finished Reading" %>
-      <%= link_to "Edit Name", edit_shelf_path(shelf) %>
-      <%= link_to "Delete", shelf, method: :delete, data: { confirm: "Are you sure? Any books under this shelf will also be removed." } %>
+      <%= link_to "Edit Name", edit_shelf_path(shelf), :class => "shelf-update" %>
+      <%= link_to "Delete", shelf, method: :delete, data: { confirm: "Are you sure? Any books under this shelf will also be removed." }, :class => "shelf-delete" %>
     <% end %>  
     
 	<div class="books">

@@ -204,6 +204,24 @@ h2 {
 	left: 30%;
 }
 
+.shelf-update {
+	font-size: 1.15em;
+	position: absolute;
+	top: 15%;
+	left: 32%;
+	z-index: 200;
+	color: white;
+}
+
+.shelf-delete {
+	font-size: 1.15em;
+	position: absolute;
+	top: 15%;
+	left: 38%;
+	z-index: 200;
+	color: white;
+}
+
 #shelf-books {
 	margin: 0px 400px;
 	background-image: url(http://i65.tinypic.com/2i0ygyo.jpg);

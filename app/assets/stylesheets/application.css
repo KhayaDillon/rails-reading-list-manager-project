@@ -57,10 +57,69 @@ nav a, nav span {
 	font-weight: bold;
 }
 
-footer {
-	background-color: #745448;
+footer div {
+	padding: 2em;
+	font-family: Arial, sans-serif;
 	color: #CDBBA7;
 }
+
+footer h3 {
+	padding-bottom: 10px;
+	font-size: 1.3em;
+	font-family: "Arial Black", sans-serif;
+}
+
+footer p {
+	font-size: 1em;
+	margin-bottom: 10px;
+	line-height: 1.3em;
+	text-align: left;
+}
+
+#about-section {
+	background-color: #745448;
+	padding-left: 400px;
+	padding-right: 400px;
+}
+
+#about-section p {
+	padding-bottom: 1.5em;
+}
+
+.button {
+	background-color: white;
+	border-radius: 15px;
+	padding: 7px 10px;
+	font-size: 0.9em;
+	width: 150px;
+	display: block;
+	margin: 0px auto 20px auto;
+	text-decoration: none;
+}
+
+#project-section {
+	
+}
+
+.footer-column {
+	float: left; 
+	width: 23%; 
+	padding: 30px 0px 60px 30px; 
+	text-align: left;
+}
+
+footer h4 {
+	padding-bottom: 15px;
+}
+
+.footer-column p, .footer-column ul {
+	font-size: 0.9em;
+}
+
+footer a {
+	color: blue;
+}
+
 
 /* Homepage Styles */
 

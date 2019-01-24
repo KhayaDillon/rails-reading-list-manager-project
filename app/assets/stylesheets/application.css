@@ -58,7 +58,7 @@ nav a, nav span {
 }
 
 footer {
-	background-color: #4B2D11;
+	background-color: #745448;
 	color: #CDBBA7;
 }
 
@@ -104,13 +104,8 @@ h2 {
 .form-div {
 	float: right;
 	width: 300px;
-	padding: 1.5em 3em 0px 0px;
+	padding: 1.5em 100px 0px 0px;
 	z-index: 200;
-}
-
-.container {
-	width: 100%;
-	position: relative;
 }
 
 
@@ -190,7 +185,9 @@ h2 {
 /* Shelves Styles */
 
 .reading-status-div {
-	
+	float: left;
+	width: 300px;
+	margin: 1.5em 0px 0px 150px;
 }
 
 .shelf-div {

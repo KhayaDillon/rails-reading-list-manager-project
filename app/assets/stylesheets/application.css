@@ -26,8 +26,19 @@ html {
 	overflow-x: hidden;
 }
 
+body {
+	position: relative;
+	min-height: 100%;
+  	min-height: 100vh;
+}
+
 a {
 	text-decoration: none;
+	color: #96BBC4;
+}
+
+button {
+	background-color: #CDBBA7;
 }
 
 div {
@@ -57,16 +68,19 @@ nav a, nav span {
 	font-weight: bold;
 }
 
-footer div {
+footer section {
 	padding: 2em;
-	font-family: Arial, sans-serif;
 	color: #CDBBA7;
 }
 
 footer h3 {
 	padding-bottom: 10px;
 	font-size: 1.3em;
-	font-family: "Arial Black", sans-serif;
+	text-align: center;
+}
+
+footer h4 {
+	padding-bottom: 15px;
 }
 
 footer p {
@@ -77,20 +91,24 @@ footer p {
 }
 
 #about-section {
-	background-color: #745448;
-	padding-left: 400px;
-	padding-right: 400px;
+	padding-left: 25%;
+	padding-right: 25%;
+	background-color: #A88862;
+	color: white;
+	word-wrap: break-word;
 }
 
 #about-section p {
 	padding-bottom: 1.5em;
 }
 
-.button {
-	background-color: white;
+.button-link {
+	background-color: #4B2D11;
+	color: white;
 	border-radius: 15px;
 	padding: 7px 10px;
-	font-size: 0.9em;
+	font-size: 1.07em;
+	text-align: center;
 	width: 150px;
 	display: block;
 	margin: 0px auto 20px auto;
@@ -98,7 +116,13 @@ footer p {
 }
 
 #project-section {
-	
+	height: 250px;
+	background-color: #4B2D11;
+}
+
+#project-section a {
+	text-decoration: underline;
+	color: #CDBBA7;
 }
 
 .footer-column {
@@ -108,16 +132,8 @@ footer p {
 	text-align: left;
 }
 
-footer h4 {
-	padding-bottom: 15px;
-}
-
 .footer-column p, .footer-column ul {
 	font-size: 0.9em;
-}
-
-footer a {
-	color: blue;
 }
 
 
@@ -210,6 +226,7 @@ h2 {
 
 .book-info-div h4 {
 	color: #9D0303;
+	font-size: 2em;
 }
 
 .down-arrow {

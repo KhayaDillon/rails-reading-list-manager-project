@@ -1,7 +1,11 @@
 
+document.addEventListener("turbolinks:load", function() {
+	addBookPadding()
+	addListeners()
+})
+
 function addListeners() {
 	const bookCoverImgs = document.querySelectorAll(".book-cover-img") 
-	addBookPadding(bookCoverImgs)
 	
 	bookCoverImgs.forEach( book => {
 		book.addEventListener("mouseenter", presentBookInfo)
@@ -10,13 +14,19 @@ function addListeners() {
 	})
 }
 
-function addBookPadding(bookCovers) {
-	bookCovers.forEach( cover => {
+function addBookPadding() {
+	const bookCoverImgs = document.querySelectorAll(".book-cover-img")
+	 
+	bookCoverImgs.forEach( cover => {
 		if (cover.clientHeight < 193) {
 			let padding = 193 - cover.clientHeight
 			cover.style.paddingTop = `${padding}px`
 		} else if (cover.clientHeight > 193) {
 			cover.style.height = "193px"
+		} 
+		
+		if (window.getComputedStyle(cover).paddingTop == "193px") {
+			cover.style.paddingTop = "0px"
 		}
 		
 		cover.style.paddingBottom = "16.5px"
@@ -45,9 +55,7 @@ function selectBook() {
 	bookCoverImgs.forEach( div => div.removeEventListener("mouseleave", hideBookInfo))
 	downArrow.forEach( arrow => arrow.addEventListener("click", function() {
 		hideBookInfo.call(book)
-		addListeners()
-		
+		addListeners()		
 	}))	
 }
  
-

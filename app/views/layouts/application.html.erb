@@ -11,7 +11,12 @@
 
   <body>
   	<header>
-  	<h1>Reading List<br> Manager</h1>
+  		<div id="site-id-div">
+		  	<h1>Reading List<br> Manager</h1>
+		  	<div id="site-id-bookmark">
+		  		<img src="#" alt="" />
+		  	</div>
+		</div>
 	    <nav>
 	        <% if user_signed_in? %>
 	          <span>Hello <%= current_user.name.capitalize %>,</span>

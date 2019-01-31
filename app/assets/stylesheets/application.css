@@ -57,16 +57,31 @@ header {
 	position: relative;
 }
 
+#site-id-div {
+	position: absolute;
+	top: 20%;
+	left: 10%;
+	width: 320px;
+}
+
 header h1 {
-	padding: 20px 20px;
 	font-size: 2.7em;
 	background-color: #ECE9E6;
 	color: #CDBBA7;
 	text-align: center;
-	position: absolute;
-	top: 20%;
-	left: 10%;
 }
+
+/*
+#site-id-bookmark {
+	background-color: #ECE9E6;
+	height: 260px;
+	width: 260px;
+	border-right: 3px solid black;
+	border-bottom: 3px solid black;
+	transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+*/
 
 nav {
 	float: right;
@@ -214,6 +229,7 @@ h2 {
 .books-div {
 	display: flex;
 	flex-flow: row wrap;
+	
 	margin: 0px auto;
 	width: 100%;
 }
@@ -225,7 +241,6 @@ h2 {
 .book-cover-img {
 	flex: 1 1 120px;
 	margin: 25px;
-	text-align: center;
 	cursor: pointer;
 }
 

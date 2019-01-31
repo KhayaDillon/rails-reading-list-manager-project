@@ -46,7 +46,7 @@ function hideBookInfo() {
 function selectBook() {
 	const book = this
 	const bookCoverImgs = document.querySelectorAll(".book-cover-img") 
-	const downArrow = document.querySelectorAll(".down-arrow") 
+	const downArrow = document.querySelectorAll(".exit-x") 
 	const body = document.querySelector("body")
 	
 	presentBookInfo.call(book)

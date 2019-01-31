@@ -59,7 +59,7 @@ header {
 
 #site-id-div {
 	position: absolute;
-	top: 20%;
+	top: 0%;
 	left: 10%;
 	width: 320px;
 }
@@ -67,6 +67,7 @@ header {
 header h1 {
 	font-size: 2.7em;
 	background-color: #ECE9E6;
+	padding: 30px 0px;
 	color: #CDBBA7;
 	text-align: center;
 }
@@ -267,13 +268,9 @@ h2 {
 	font-size: 2em;
 }
 
-.down-arrow {
-	border-right: 3px solid black;
-	border-bottom: 3px solid black;
-	padding: 5px;
-	transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-	
+.exit-x {
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
 	cursor: pointer;	
 	position: absolute;
 	top: 10px;

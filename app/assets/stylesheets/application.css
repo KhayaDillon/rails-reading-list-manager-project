@@ -14,10 +14,26 @@
  *= require_self
  */
 
- div.left {
-   float: left;
-   padding-left: 1.5em;
- }
+/* General Styles */
+
+div {
+	width: 100%;
+}
+
+.center {
+	margin: 0 auto;
+	display: block;
+}
+
+h1 {
+	text-align: center;
+}
+
+/* Homepage Styles */
+
+#index-img {
+	width: 70%;
+}
 
  .field_with_errors, #error_explanation {
   padding: 2px 1em;

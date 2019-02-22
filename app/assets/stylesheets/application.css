@@ -46,9 +46,9 @@ nav {
 }
 
 nav a {
-	color: #B70012;	
+	color: #AF0212;	
 	padding: 0.5em;
-	font-size: 1.15em;
+	font-size: 1.2em;
 	font-weight: bold;
 }
 
@@ -71,21 +71,22 @@ footer {
 }
 
 #index h2 {
-	color: #B70012;
-	font-size: 2.7em;
+	color: #AF0212;
+	text-shadow: 3px 3px 10px white;
+	font-size: 2em;
 	position: absolute;
 	text-align: center;
 	width: 100%;
-	top: 30%;
+	top: 45%;
 }
 
 #index a {
-	background: #B70012;
+	background: #AF0212;
 	color: white;
-	font-size: 1.7em;
-	padding: 5px;
-	border-radius: 5px;
+	font-size: 2.4em;
+	padding: 10px;
+	border-radius: 7px;
 	position: absolute;
-	top: 50%;
-	left: 47%;
+	top: 32%;
+	left: 46%;
 }

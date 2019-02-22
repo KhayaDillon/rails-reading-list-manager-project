@@ -16,8 +16,18 @@
 
 /* General Styles */
 
+* {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
 div {
 	width: 100%;
+	position: relative;
 }
 
 .center {
@@ -25,18 +35,57 @@ div {
 	display: block;
 }
 
-h1 {
-	text-align: center;
+header {
+	background-color: #CDBBA7;
+	height: 125px;
 }
+
+nav {
+	float: right;
+	margin: 1em 4.5em 0em 0em;
+}
+
+nav a {
+	color: #B70012;	
+	padding: 0.5em;
+	font-size: 1.15em;
+	font-weight: bold;
+}
+
+footer {
+	background-color: #4B2D11;
+	color: #CDBBA7;
+}
+
 
 /* Homepage Styles */
 
 #index-img {
-	width: 70%;
+	width: 100%;
 }
 
- .field_with_errors, #error_explanation {
+.field_with_errors, #error_explanation {
   padding: 2px 1em;
   border-left: 1.6em solid maroon;
   background-color: linen;
+}
+
+#index h2 {
+	color: #B70012;
+	font-size: 2.7em;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	top: 30%;
+}
+
+#index a {
+	background: #B70012;
+	color: white;
+	font-size: 1.7em;
+	padding: 5px;
+	border-radius: 5px;
+	position: absolute;
+	top: 50%;
+	left: 47%;
 }

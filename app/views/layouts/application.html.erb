@@ -9,21 +9,24 @@
   </head>
 
   <body>
-    <nav>
-      <ul>
-        <% if user_signed_in? %>
-          Hello <%= current_user.name.capitalize %>, 
-          <%= link_to "Home", root_path %>
-          <%= link_to "Library", books_path %>
-          <%= link_to "Your Shelves", user_shelves_path(current_user) %>
-          <%= link_to "Sign Out", destroy_user_session_path, method: 'delete' %>
-        <% else %>
-          <%= link_to "Home", root_path %>
-          <%= link_to "Login", new_user_session_path %>
-          <%= link_to "Sign Up", new_user_registration_path %>
-        <% end %>
-      </ul>
-    </nav>
+  	<header>
+  	<h1>Reading List Manager</h1>
+	    <nav>
+	      <ul>
+	        <% if user_signed_in? %>
+	          Hello <%= current_user.name.capitalize %>, 
+	          <%= link_to "Home", root_path %>
+	          <%= link_to "Library", books_path %>
+	          <%= link_to "Your Shelves", user_shelves_path(current_user) %>
+	          <%= link_to "Sign Out", destroy_user_session_path, method: 'delete' %>
+	        <% else %>
+	          <%= link_to "Home", root_path %>
+	          <%= link_to "Login", new_user_session_path %>
+	          <%= link_to "Sign Up", new_user_registration_path %>
+	        <% end %>
+	      </ul>
+	    </nav>
+    </header>
     <% if !flash.empty? %>
     <div class="field_with_errors">
       <h1>Notice!</h1>
@@ -33,5 +36,7 @@
     <% end %>
 
     <%= yield %>
+    <footer>
+    </footer>
   </body>
 </html>
